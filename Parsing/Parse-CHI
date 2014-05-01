@@ -1,0 +1,49 @@
+#to parse xml file into field data
+import glob
+import cPickle as pickle
+from BeautifulSoup import *
+
+authorlist = []
+fileNames = glob.glob('../../ACMdata/CHI/*.xml')
+output = open('../../ACMdata/output/CHI-author-list', 'wb')
+cc = 0
+for f in fileNames:
+    xml = open(f, 'rU').read()
+    soup = BeautifulSoup(xml)
+    cc  +=1 
+    print "Proc" +str(cc) + " Complete"
+    for ar in soup.findAll('article_rec'):
+        year = ar.find('article_publication_date').text[-4:]
+        if ar.find('au').find('person_id') and year != '':
+            if 1900 <= int(year) <= 2013: 
+                Aus =  ar.findAll('au')
+                if len(Aus) > 1:
+                    if Aus[0].find('middle_name').text =="":
+                        auname = Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text
+                    else:
+                        auname = Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text + " (" +Aus[0].find('middle_name').text + ")"
+                    output.write(auname + '\n')
+                    if not (auname in authorlist): authorlist.append(auname)
+                    for au in Aus[1:]:
+                        if au.find('middle_name' ==""):
+                            auname = au.find('last_name').text + ', ' + au.find('first_name').text
+                        else:
+                            auname = au.find('last_name').text + ', ' + au.find('first_name').text + " (" +au.find('middle_name').text + ")"
+                        output.write(auname + '\n')
+                        if not (auname in authorlist): authorlist.append(auname)                        
+                else:
+                    if Aus[0].find('middle_name' ==""):
+                        auname = Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text
+                    else:
+                        auname = Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text + " (" +Aus[0].find('middle_name').text + ")"
+                    output.write(auname+ '\n')
+                    if not (auname in authorlist): authorlist.append(auname)
+                output.write('\n')
+output.close()
+
+# with open('20yr all author-identities.pck', 'wb') as auid:
+#     pickle.dump(ArAuDic, auid)
+output2 = open('../../ACMdata/output/CHI-author-list-id', 'wb')
+for aun in sorted(authorlist):
+    output2.write(aun + "\n")
+output2.close()
