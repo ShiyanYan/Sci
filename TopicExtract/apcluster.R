@@ -1,5 +1,5 @@
 args <- commandArgs(trailingOnly = TRUE)
 simMatr = read.table(args[1],header=T)
 library(apcluster)
-ap = apcluster(simMatr)
+ap = apcluster(as.matrix(simMatr))
 print(ap)
