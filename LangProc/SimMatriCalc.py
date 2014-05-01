@@ -1,7 +1,9 @@
 #Similarity matrix Calculation
-import pickle
+import cPickle as pickle
 import math
-dic = pickle.load(open("../../ACMdata/output/dict","r"))
+import sys
+syspath = sys.argv[1]
+dic = pickle.load(open(syspath+"dict","r"))
 i = 1
 dicts = {}
 dictss = {}
@@ -11,7 +13,7 @@ for t in dic:
     i += 1
 dicRange = i-1
 
-outdic= open("../../ACMdata/output/outdic","w")
+outdic= open(syspath+"outdic","w")
 pickle.dump(dictss,outdic)
 print dicRange
 matr = {}
@@ -28,7 +30,7 @@ for i in range(1,dicRange+2):
         else:
             matr[i].append(0)
 print len(matr)
-infile = open("../../ACMdata/output/word-links","r")
+infile = open(syspath+"word-links","r")
 for line in infile:
     ss = line.split("\t")
     num1 = dicts[ss[0]]
@@ -42,10 +44,10 @@ for line in infile:
     matr[num2][num1] += math.log(cc+1,2)/math.log(26000,2)
 
 print len(dicts)
-pickle.dump(matr,open("../../ACMdata/output/simMatrix","w"))
-pickle.dump(dicts,open("../../ACMdata/output/wordMatchNum","w"))
+pickle.dump(matr,open(syspath+"simMatrix","w"))
+pickle.dump(dicts,open(syspath+"wordMatchNum","w"))
 
-outfile = open("../../ACMdata/output/sim","w")
+outfile = open(syspath+"sim","w")
 for i in range(0,dicRange):
     word = dic[i].replace(" ","_")
     if i==dicRange-1:

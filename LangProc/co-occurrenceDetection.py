@@ -1,10 +1,11 @@
 #co-occurrence detection
 dicLink = {}
 import collections
-import pickle
+import cPickle as pickle
+import sys
 dic = []
 TT = 0
-infile = open("../../ACMdata/output/gramslist_Uni","r")
+infile = open(sys.argv[1],"r")
 for line in infile:
     TT += 1
     if (TT % 10000==0): print "Complete " + str(TT)
@@ -25,7 +26,7 @@ for line in infile:
             else:
                 dicLink[s] = 1
 
-outfile = open("../../ACMdata/output/word-links-uni","w")
+outfile = open(sys.argv[2],"w")
 dicLink = collections.OrderedDict(sorted(dicLink.items()))
 print len(dicLink)
 MAX = 0
@@ -38,6 +39,6 @@ for item in dicLink:
 outfile.close()
 print MAX
 dic = sorted(dic)
-out = open("../../ACMdata/output/dict","w")
+out = open(sys.argv[3],"w")
 pickle.dump(dic,out)
 out.close()

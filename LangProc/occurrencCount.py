@@ -4,8 +4,10 @@ from nltk.corpus import *
 import pickle
 from nltk import bigrams
 from nltk import trigrams
+import sys
 
-dicFile = open("../../DictForPaper/CategoryTermsSorted","r")
+
+dicFile = open(sys.argv[1],"r")
 dic = []
 for line in dicFile:
     line = line[0:len(line)-1]
@@ -16,7 +18,7 @@ inputfile = open("../../ACMdata/in.txt","r") #Consider the batch processing late
 punc_list = ['!','"','#','$','%','&','\\',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[',']','^','_','`','{','|','}','~']
 stop_word = stopwords.words("english")
 
-outfile = open("../../ACMdata/output/gramslist_Uni","w")
+outfile = open(sys.argv[2],"w")
 
 def inDic(term):
     i = 0

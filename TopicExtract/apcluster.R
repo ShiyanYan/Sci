@@ -1,0 +1,5 @@
+args <- commandArgs(trailingOnly = TRUE)
+simMatr = read.csv(args[1],header=T)
+library(apcluster)
+ap = apcluster(simMatr)
+print(ap)
