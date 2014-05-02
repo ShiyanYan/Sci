@@ -26,3 +26,32 @@ with open(path+"apcluster/ResultsText2.txt","w") as f:
             ss = dic[it].replace(" ","_")
             f.write(ss + "\t")
         f.write("\n")
+
+i = 0
+outfile1 = open(path+"exemplar.dump","wb")
+outfile2 = open(path+"DicForClu.dump","wb")
+exemplar = []
+exemplar.append("0")
+DicForClu = {}
+for item in assign:
+    i += 1
+    ex = dic[item]
+    exemplar.append(ex)
+    DicForClu[i] = []
+    for it in assign[item]:
+        DicForClu[i].append(dic[it])
+i = 0
+for it in exemplar:
+    i += 1
+    if i>10: break
+    print i,it,exemplar[i-1]
+i = 0
+for it in DicForClu:
+    i += 1
+    if i>10: break
+    print i, DicForClu[i]
+print len(exemplar),len(DicForClu)
+pickle.dump(exemplar,outfile1)
+pickle.dump(DicForClu,outfile2)
+
+    
