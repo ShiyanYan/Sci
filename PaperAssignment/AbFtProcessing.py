@@ -1,9 +1,9 @@
 #ABFTprocessing process the Ab and fulltext as a list of word from our dictionary
 import nltk
 import cPickle as pickle
-
+import sys
 dic = [] # the dic of grams
-with open("../../DictForPaper/CategoryTermsSortedNoUni","r") as f:
+with open(sys.argv[1],"r") as f:
     for line in f:
         line = line[0:len(line)-1]
         dic.append(line)
@@ -25,10 +25,10 @@ def isInDic(term):
     else:
         return False
     
-
+path = "../../DictForPaper/"
 AbMatchGrams = {} # abbrev match grams 
 WholeMatchAb = {} # whole words + abbr  match abbr
-inwholedic = open("../../DictForPaper/WholeMatchAb","rb")
+inwholedic = open(path+"WholeMatchAb","rb")
 WholeMatchAb = pickle.load(inwholedic)
 listOfWhole = []
 for t in WholeMatchAb:
@@ -61,10 +61,10 @@ def Abbr(term):
 
 
 
-infile = open("../../ACMdata/test3.txt","rb") #some simple version here
+infile = open("../../ACMdata/in.txt","rb") #some simple version here
 flaga = False
 flagf = False
-out = open("../../ACMdata/test3-out.txt","wb") # some simple output
+out = open("../../ACMdata/Paper_Assignment_Result.txt","wb") # some simple output
 for line in infile:
     if (line[0:2] =="ID"):
         IDnow = line[3:len(line)-1]
