@@ -1,15 +1,17 @@
 #abbrev detection
 dic = []
 import cPickle as pickle
-with open("../../DictForPaper/CategoryTermsSortedNoUni","rb") as f:
+import sys
+with open(sys.argv[1],"rb") as f:
     for line in f:
         w = line[0:len(line)-1]
         dic.append(w)
 
-out = open("../../DictForPaper/AbbMatch","wb") # abbreviation lists
+path = "../../DictForPaper/"
+out = open(path + "AbbMatch","wb") # abbreviation lists
 
 abbdic = {}
-with open("../../Wiki/abbrvs.count","rb") as f:
+with open(path + "abbrvs.count","rb") as f:
     i = 0
     for line in f:
         i += 1
