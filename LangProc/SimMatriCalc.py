@@ -44,22 +44,38 @@ for line in infile:
     matr[num2][num1] += math.log(cc+1,2)/math.log(26000,2)
 
 print len(dicts)
-pickle.dump(matr,open(syspath+"simMatrix","w"))
-pickle.dump(dicts,open(syspath+"wordMatchNum","w"))
+# pickle.dump(matr,open(syspath+"simMatrix","w"))
+# pickle.dump(dicts,open(syspath+"wordMatchNum","w"))
 
-outfile = open(syspath+"sim","w")
-for i in range(0,dicRange):
-    word = dic[i].replace(" ","_")
-    if i==dicRange-1:
-        outfile.write(word + "\n")
-    else:
-        outfile.write(word + " ")
-
+# outfile = open(syspath+"sim","w")
+# for i in range(0,dicRange):
+#     word = dic[i].replace(" ","_")
+#     if i==dicRange-1:
+#         outfile.write(word + "\n")
+#     else:
+#         outfile.write(word + " ")
+outfile2 = open(syspath+"similarityFile","w")
+x = 0
 for i in range(1,dicRange+1):
     for j in range(1,dicRange+1):
-        if (j==dicRange):
-            outfile.write( str(matr[i][j]) + "\n")
-        else:
-            outfile.write( str(matr[i][j]) + " ")
+        if (matr[i][j]>=0):
+            x += matr[i][j] 
+            outfile2(str(i)+"  "+str(j) + "  " + str(matr[i][j]) + "\n")
 
-outfile.close()
+outfile2.close()
+
+outfile3 = open(syspath+"summary","w")
+outfile3.write("number of grams\n")
+outfile.write(str(dicRange)+"\n")
+outfile3.write("average\n")
+outfile3.write(str(x/dicRange/dicRange))
+outfile3.close()
+
+# for i in range(1,dicRange+1):
+#     for j in range(1,dicRange+1):
+#         if (j==dicRange):
+#             outfile.write( str(matr[i][j]) + "\n")
+#         else:
+#             outfile.write( str(matr[i][j]) + " ")
+
+# outfile.close()
