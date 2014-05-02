@@ -1,21 +1,34 @@
-Complete 10000
-Complete 20000
-Complete 30000
-Complete 40000
-Complete 50000
-Complete 60000
-Complete 70000
-Complete 80000
-Complete 90000
-Complete 100000
-Complete 110000
-Complete 120000
-Complete 130000
-Complete 140000
-Complete 150000
-1291831
-782
-20244
-1 1
-20245
-20244
+1	2	0.0681838760821
+1	3	0.0681838760821
+1	135	0.0681838760821
+1	514	0.0681838760821
+1	678	0.108068886744
+1	691	0.0681838760821
+1	695	0.108068886744
+1	697	0.0681838760821
+1	702	0.0681838760821
+1	705	0.0681838760821
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+0.0785274122384
+Press 'q' to abort ...
+[?1049h[1;24r(B[m[4l[?7h[H[2J[24;1H[?1049l[?1l>[24;1H[?1049l[?1l>./apclusterunix64.so: cannot open shared object file: No such file or directory
+
+maxits=2000
+convits=200
+dampfact=0.900000
+number of data points: 20244
+Preferences: 0.068184
+	 (median of similarities)
+Start:	May 02, 2014, Friday, 11:47:24 EDT
+End:	May 02, 2014, Friday, 11:47:36 EDT
+
+For more information, please read the files under "../../ClusterResults/apcluster/" ...
+

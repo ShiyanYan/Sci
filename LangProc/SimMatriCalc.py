@@ -56,19 +56,24 @@ print len(dicts)
 #         outfile.write(word + " ")
 outfile2 = open(syspath+"similarityFile","w")
 x = 0
+el = 0
 for i in range(1,dicRange+1):
+    flag = False
     for j in range(1,dicRange+1):
-        if (matr[i][j]>=0):
-            x += matr[i][j] 
-            outfile2(str(i)+"  "+str(j) + "  " + str(matr[i][j]) + "\n")
-
+        if (matr[i][j]>0) and (i!=j):
+            x += matr[i][j]
+            el += 1
+            flag = True 
+            outfile2.write(str(i)+"\t"+str(j) + "\t" + str(matr[i][j]) + "\n")
+    if not (flag): print(i)
+#outfile2.write("\n")
 outfile2.close()
 
 outfile3 = open(syspath+"summary","w")
 outfile3.write("number of grams\n")
-outfile.write(str(dicRange)+"\n")
+outfile3.write(str(dicRange)+"\n")
 outfile3.write("average\n")
-outfile3.write(str(x/dicRange/dicRange))
+outfile3.write(str(x/el))
 outfile3.close()
 
 # for i in range(1,dicRange+1):
