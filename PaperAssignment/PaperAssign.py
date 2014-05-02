@@ -1,8 +1,8 @@
 #PaperAssignment
-import pickle
-infile = open("../../ACMdata/wordlist-fulltext.txt","rb")
-DicForClu = pickle.load(open("../../ACMdata/DicForClu","rb"))
-exemplar = pickle.load(open("../../ACMdata/exemplar","rb"))
+import cPickle as pickle
+infile = open("../../ACMdata/Paper_Assignment_Result.txt","rb")
+DicForClu = pickle.load(open("../../ClusterResults/DicForClu.dump","rb"))
+exemplar = pickle.load(open("../../ClusterResults/exemplar.dump","rb"))
 
 ids = ""
 IdMatchTopics = {}
@@ -54,5 +54,8 @@ for line in infile:
     	flagf = True
 print k
 pickle.dump(IdMatchTopics,open("../../ACMdata/IdMatchTopics","wb"))
-# for j in IdMatchTopics:
-#     print j, IdMatchTopics[j]
+i = 0
+for j in IdMatchTopics:
+    i += 1
+    if i>10: break
+    print j, IdMatchTopics[j]
