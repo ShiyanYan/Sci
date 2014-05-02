@@ -1,3 +1,3 @@
 # bash codes for paper assignment
 cd ../PaperAssignment
-python AbbrevDetect.py ../../DicForPaper/MergedDicGramsNoUni
+python AbbrevDetect.py ../../DictForPaper/MergedDicGramsNoUni
