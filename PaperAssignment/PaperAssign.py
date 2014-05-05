@@ -3,10 +3,12 @@ import cPickle as pickle
 infile = open("../../ACMdata/Paper_Assignment_Result.txt","rb")
 DicForClu = pickle.load(open("../../ClusterResults/DicForClu.dump","rb"))
 exemplar = pickle.load(open("../../ClusterResults/exemplar.dump","rb"))
+i = 0
 
 ids = ""
 IdMatchTopics = {}
 k = 0
+dic = {}
 for line in infile:
     if len(line)<2: continue
     if line[0:2] == "ID":
@@ -56,6 +58,6 @@ print k
 pickle.dump(IdMatchTopics,open("../../ACMdata/IdMatchTopics","wb"))
 i = 0
 for j in IdMatchTopics:
-    i += 1
+    if len(IdMatchTopics[j])>0: i += 1
     if i>10: break
-    print j, IdMatchTopics[j]
+    if len(IdMatchTopics[j])>0: print j, IdMatchTopics[j]

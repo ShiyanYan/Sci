@@ -61,7 +61,7 @@ def Abbr(term):
 
 
 
-infile = open("../../ACMdata/in.txt","rb") #some simple version here
+infile = open("../../ACMdata/ID_AB_FT.txt","rb") #some simple version here
 flaga = False
 flagf = False
 out = open("../../ACMdata/Paper_Assignment_Result.txt","wb") # some simple output
