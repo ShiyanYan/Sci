@@ -37,9 +37,8 @@ for item in assign:
     i += 1
     ex = dic[item]
     exemplar.append(ex)
-    DicForClu[i] = []
     for it in assign[item]:
-        DicForClu[i].append(dic[it])
+        DicForClu[dic[it]] = i
 i = 0
 for it in exemplar:
     i += 1
@@ -49,7 +48,7 @@ i = 0
 for it in DicForClu:
     i += 1
     if i>10: break
-    print i, DicForClu[i]
+    print i, it, DicForClu[it]
 print len(exemplar),len(DicForClu)
 pickle.dump(exemplar,outfile1)
 pickle.dump(DicForClu,outfile2)
