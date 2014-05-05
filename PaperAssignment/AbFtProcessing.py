@@ -117,7 +117,7 @@ for line in infile:
             if gram.lower() in trans: wordlist.append(trans[gram.lower()])
         out.write("AB \n")
         for gram in wordlist:
-            out.write(gram.replace(" ","_") + "\t")
+            out.write(gram + "\t")
         out.write("\n")
     if (flagf) and (line!="\n"): ss = ss + line[0:len(line)-1]
     if (flagf) and (line=="\n"):
@@ -169,7 +169,7 @@ for line in infile:
             if gram.lower() in trans: wordlist.append(trans[gram.lower()])
         out.write("FT \n")
         for gram in wordlist:
-            out.write(gram.replace(" ","_") + "\t")
+            out.write(gram + "\t")
         out.write("\n")
         out.write("\n")
 

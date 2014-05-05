@@ -3,9 +3,9 @@ import networkx as nx
 import pickle
 IdMatchTopics = {}
 IdMatchTopics = pickle.load(open("../../ACMdata/IdMatchTopics","r"))
-IDmatchScore = {}
-infile1 = open("../../ACMdata/IdMatchScore","r")
-IDmatchScore = pickle.load(infile1)
+# IDmatchScore = {}
+# infile1 = open("../../ACMdata/IdMatchScore","r")
+# IDmatchScore = pickle.load(infile1)
 
 class Paper:
     #ID
