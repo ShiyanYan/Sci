@@ -22,6 +22,7 @@ subpapers = pickle.load(open("../../ACMdata/SubPapers.dump","r"))
 
  
 i = 0
+tot = {}
 for p in subpapers:
     i += 1
     print "Paper ",i
@@ -33,7 +34,24 @@ for p in subpapers:
     Assign = ""
     for k in sorted(ss,key=ss.get,reverse=True):
         j += 1
-        if j>3: break
-        Assign += str(k) + " " + str(ss[k]) + " "
+        if k in tot:
+            tot[k] += ss[k]
+        else:
+            tot[k] = ss[k]
+        if j<=3:
+            Assign += str(k) + " " + str(ss[k]) + " "
     print Assign
     print
+
+for t in tot:
+    tot[t] = tot[t] / i
+
+print "OverAll, the author published " + str(i) + " papers"
+print "Assignment over Topics"
+Assign = ""
+j = 0
+for k in sorted(tot, key=tot.get,reverse=True):
+    j += 1
+    if j<=10:
+        Assign += str(k) + " " + str(tot[k]) + " "
+print Assign
