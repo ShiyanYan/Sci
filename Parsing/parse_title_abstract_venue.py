@@ -13,7 +13,7 @@ for f in fileNames:
     output.write(ss[1] + "\n")
     xml = open(f, 'rU').read()
     soup = BeautifulSoup(xml)
-    cc  +=1 
+    cc  += 1 
     print "Proc" +str(cc) + " Complete"
     for ar in soup.findAll('article_rec'):
         ti = ar.find("title").text
