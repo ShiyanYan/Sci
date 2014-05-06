@@ -5,20 +5,19 @@ import cPickle as pickle
 from bs4 import BeautifulSoup
 
 authorlist = []
-fileNames = glob.glob('../../../ACMdata/proceeding/*.xml')
+fileNames = glob.glob('../../../ACMdata/periodical/*.xml')
 
 cc = 0
-output = open("../../ACMdata/ID_Metadata.txt","wb")
+output = open("../../ACMdata/ID_Metadata2.txt","wb")
 for f in fileNames:
     xml = open(f, 'rU').read()
     soup = BeautifulSoup(xml)
     cc  += 1 
     print "Proc" +str(cc) + " Complete"
-    if cc>10: break
+#    if cc>10: break
     for ar in soup.findAll('article_rec'):
         Id = ar.find("article_id").text
         output.write("ID "+ Id + "\n") # parsing ID
-        output.write("TI " + tt.encode("UTF-8") + "\n")
         if ar.find("title")!=None:
             ti = ar.find("title").text
         else:
@@ -29,18 +28,21 @@ for f in fileNames:
             subti = ""
         tt = ti
         if subti!="": tt = ti+": "+subti # parsing TI
-
+        output.write("TI " + tt.encode("UTF-8") + "\n")
         output.write('CI 0' + '\n') # Writing CI
         if soup.find('series_title'):
             output.write('SO ' + soup.find('series_title').text + '\n')
         else:
-            output.write('SO ' + soup.find('proc_title').text + '\n')
+            if soup.find("proc_title"):
+                output.write('SO ' + soup.find('proc_title').text + '\n')
         # parsing SO
-        if ar.find('page_from') and ar.find('page_to'):
-            output.write('BI ' + soup.find('proc_desc').text + ': ' + ar.find('page_from').text + '-' + ar.find('page_to').text + ' ' + ar.find('article_publication_date').text + '\n')
-        else:
-            output.write('BI ' + soup.find('proc_desc').text + ': ' + ar.find('article_publication_date').text + '\n')    
-        # parsing BI
+        
+        #if ar.find('page_from') and ar.find('page_to') and (ar.find("article_publication_date")!=None)  and (soup.find('proc_desc')!=None):
+        #    output.write('BI ' + soup.find('proc_desc').text + ': ' + ar.find('page_from').text + '-' + ar.find('page_to').text + ' ' + ar.find('article_publication_date').text + '\n')
+        #else:
+        #    output.write('BI ' + soup.find('proc_desc').text + ': ' + ar.find('article_publication_date').text + '\n')    
+  
+       # parsing BI
         Aus =  ar.findAll('au') 
         aus = []
         for au in Aus:
@@ -48,11 +50,12 @@ for f in fileNames:
                 aus.append([au.find('last_name').text + ', ' + au.find('first_name').text, au.find('person_id').text])
 
         if len(Aus) > 1:
-            output.write('AU ' + Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text[0] + '\n')
+            output.write('AU ' + Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text + '\n')
             for au in Aus[1:]:
-                output.write(' ' + au.find('last_name').text + ', ' + au.find('first_name').text[0] + '\n')
+                output.write(' ' + au.find('last_name').text + ', ' + au.find('first_name').text + '\n')
         else:
-            output.write('AU ' + Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text[0] + '\n')
+            if (len(Aus)>=1):
+                output.write('AU ' + Aus[0].find('last_name').text + ', ' + Aus[0].find('first_name').text + '\n')
         for au in Aus:
             if au.find('affiliation'):
                 output.write('AF ' + au.find('affiliation').text + '\n')
