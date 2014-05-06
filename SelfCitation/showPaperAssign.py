@@ -1,7 +1,26 @@
 import cPickle as pickle
-IdMatchTopics = pickle.load(open("../../ACMdata/IdMatchTopics","r"))
-subpapers = pickle.load(open("../../ACMdata/SubPapers.dump"),"r")
 
+class Paper:
+    #ID    #CI    #SO    #TI    #BI    #AU []    #AF []    #CT []    #CO []    #RF []    #CA []    #YR    #AB
+    def __init__(self):
+        self.ID = ''
+        self.CI = ''
+        self.SO = ''
+        self.TI = ''
+        self.BI = ''
+        self.AU = []
+        self.AF = []
+        self.CT = []
+        self.CO = []
+        self.RF = []
+        self.CA = []
+        self.YR = 0 #integer
+        self.AB = '' #abstract
+
+IdMatchTopics = pickle.load(open("../../ACMdata/IdMatchTopics","r"))
+subpapers = pickle.load(open("../../ACMdata/SubPapers.dump","r"))
+
+ 
 i = 0
 for p in subpapers:
     i += 1
@@ -9,9 +28,10 @@ for p in subpapers:
     print "ID = ",p.ID
     print "Title = ",p.TI
     ss = IdMatchTopics[p.ID]
+    if len(ss)==0: continue
     j = 0
     Assign = ""
-    for k in sorted(ss,key=ss.get(),reverse=True):
+    for k in sorted(ss,key=ss.get,reverse=True):
         j += 1
         if j>3: break
         Assign += str(k) + " " + str(ss[k]) + " "
