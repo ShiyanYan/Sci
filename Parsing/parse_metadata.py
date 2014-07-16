@@ -5,10 +5,10 @@ import cPickle as pickle
 from bs4 import BeautifulSoup
 
 authorlist = []
-fileNames = glob.glob('../../../ACMdata/periodical/*.xml')
+fileNames = glob.glob('../../../ACMdata/proceeding/*.xml')
 
 cc = 0
-output = open("../../ACMdata/ID_Metadata2.txt","wb")
+output = open("../../ACMdata/ID_Metadata_Proc.txt","wb")
 for f in fileNames:
     xml = open(f, 'rU').read()
     soup = BeautifulSoup(xml)

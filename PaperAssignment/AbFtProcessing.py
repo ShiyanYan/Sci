@@ -25,7 +25,7 @@ def isInDic(term):
     else:
         return False
     
-path = "../../DictForPaper/"
+path = sys.argv[2]
 AbMatchGrams = {} # abbrev match grams 
 WholeMatchAb = {} # whole words + abbr  match abbr
 inwholedic = open(path+"WholeMatchAb","rb")
@@ -61,10 +61,10 @@ def Abbr(term):
 
 
 
-infile = open("../../ACMdata/ID_AB_FT.txt","rb") #some simple version here
+infile = open(sys.argv[3],"rb") #some simple version here
 flaga = False
 flagf = False
-out = open("../../ACMdata/Paper_Assignment_Result.txt","wb") # some simple output
+out = open(sys.argv[2]+"Paper_Assignment_Result.txt","wb") # some simple output
 for line in infile:
     if (line[0:2] =="ID"):
         IDnow = line[3:len(line)-1]

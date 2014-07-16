@@ -1,5 +1,6 @@
 import cPickle as pickle
-path = "../../ClusterResults/"
+import sys
+path = sys.argv[1]
 dic = pickle.load(open(path+"outdic","r"))
 i = 0
 print len(dic)
@@ -15,9 +16,9 @@ with open(path+"apcluster/idx.txt","r") as f:
             assign[k] = []
             assign[k].append(i)
 i = 0
-with open(path+"apcluster/ResultsText2.txt","w") as f:
+with open(path+"apcluster/ResultsText.txt","w") as f:
     for item in assign:
-        if len(assign[item])<=2: continue
+#        if len(assign[item])<=2: continue
         ex = dic[item]
         i +=1
         f.write("------------------\n") 

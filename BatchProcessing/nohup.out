@@ -1,0 +1,44 @@
+3583
+24163
+Traceback (most recent call last):
+  File "AbFtProcessing.py", line 31, in <module>
+    inwholedic = open(path+"WholeMatchAb","rb")
+IOError: [Errno 2] No such file or directory: '../../ClusterResultsHuman/WholeMatchAb'
+Traceback (most recent call last):
+  File "PaperAssign.py", line 3, in <module>
+    path = sys.argv[1]
+NameError: name 'sys' is not defined
+3583
+24163
+24163 24163
+10000
+20000
+30000
+40000
+50000
+60000
+70000
+80000
+90000
+100000
+110000
+120000
+130000
+140000
+150000
+160000
+170000
+180000
+190000
+200000
+201550
+378466 {'data structure': 0.14285714285714285, 'power consumption': 0.7142857142857143, 'shared memory': 0.14285714285714285}
+378467 {'energy consumption': 0.75, 'resource allocation': 0.25}
+378464 {'optimization problem': 0.125, 'gate arrays': 0.75, 'genetic algorithm': 0.125}
+378462 {'steiner tree': 1.0}
+378460 {'software development': 0.15384615384615385, 'description language': 0.07692307692307693, 'instruction set': 0.5384615384615384, 'operating systems': 0.15384615384615385, 'programming language': 0.07692307692307693}
+378461 {'design methodology': 0.5, 'resource allocation': 0.5}
+1774512 {'grid computing': 0.14285714285714285, 'multi-agent systems': 0.2857142857142857, 'assignment problem': 0.14285714285714285, 'sensor network': 0.42857142857142855}
+1774513 {'computer systems': 0.3333333333333333, 'data processing': 0.3333333333333333, 'recent years': 0.3333333333333333}
+1774511 {'software development': 0.16666666666666666, 'model transformation': 0.16666666666666666, 'augmented reality': 0.16666666666666666, 'modeling language': 0.16666666666666666, 'search engine': 0.16666666666666666, 'programming language': 0.16666666666666666}
+1774517 {'software development': 0.5, 'distributed systems': 0.5}

@@ -1,5 +1,5 @@
 import cPickle as pickle
-
+import sys
 class Paper:
     #ID    #CI    #SO    #TI    #BI    #AU []    #AF []    #CT []    #CO []    #RF []    #CA []    #YR    #AB
     def __init__(self):
@@ -16,9 +16,9 @@ class Paper:
         self.CA = []
         self.YR = 0 #integer
         self.AB = '' #abstract
-
-IdMatchTopics = pickle.load(open("../../ACMdata/IdMatchTopics","r"))
-subpapers = pickle.load(open("../../ACMdata/SubPapers.dump","r"))
+path = sys.argv[1]
+IdMatchTopics = pickle.load(open(path + "IdMatchTopics","r"))
+subpapers = pickle.load(open(path + "SubPapers.dump","r"))
 
  
 i = 0
@@ -53,5 +53,5 @@ j = 0
 for k in sorted(tot, key=tot.get,reverse=True):
     j += 1
     if j<=10:
-        Assign += str(k) + " " + str(tot[k]) + " "
+        Assign += str(j) + "\t" +  str(k) + "\t" + str(tot[k]) + "\n"
 print Assign

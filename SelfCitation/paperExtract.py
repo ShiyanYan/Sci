@@ -1,7 +1,7 @@
 #Extract papers from one author
 import cPickle as pickle
-
-AuthorName = "Lagoze, Carl"
+import sys
+AuthorName = sys.argv[2] + ", " + sys.argv[1]
 class Paper:
     #ID    #CI    #SO    #TI    #BI    #AU []    #AF []    #CT []    #CO []    #RF []    #CA []    #YR    #AB
     def __init__(self):
@@ -31,7 +31,7 @@ def readPaperFromFile(File):
     i = 0
     for lines in inFile:
         i += 1
-        if i%100000 == 0: print "Proc " + str(i) + " Complete"
+        #if i%100000 == 0: print "Proc " + str(i) + " Complete"
         string = str(lines)
         if(string =='\n' or string ==' \n'):
             PaperFlag = 0
@@ -104,8 +104,8 @@ def readPaperFromFile(File):
             s = string[3:l-1]
             p.CA.append(s)
 
-readPaperFromFile("../../ACMdata/ID_Metadata.txt")
-fout = open("../../ACMdata/SubPapers.dump","wb")
+readPaperFromFile(sys.argv[3])
+fout = open(sys.argv[4]+"SubPapers.dump","wb")
 pickle.dump(subpapers,fout)
 i = 0
 for p in subpapers:

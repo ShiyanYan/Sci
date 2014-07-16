@@ -1,8 +1,10 @@
 #PaperAssignment
 import cPickle as pickle
-infile = open("../../ACMdata/Paper_Assignment_Result.txt","rb")
-DicForClu = pickle.load(open("../../ClusterResults/DicForClu.dump","rb"))
-exemplar = pickle.load(open("../../ClusterResults/exemplar.dump","rb"))
+import sys
+path = sys.argv[1]
+infile = open(path + "Paper_Assignment_Result.txt","rb")
+DicForClu = pickle.load(open(path+"DicForClu.dump","rb"))
+exemplar = pickle.load(open(path + "exemplar.dump","rb"))
 i = 0
 
 ids = ""
@@ -55,7 +57,7 @@ for line in infile:
     if line[0:2] == "FT":
     	flagf = True
 print k
-pickle.dump(IdMatchTopics,open("../../ACMdata/IdMatchTopics","wb"))
+pickle.dump(IdMatchTopics,open(path + "IdMatchTopics","wb"))
 i = 0
 for j in IdMatchTopics:
     if len(IdMatchTopics[j])>0: i += 1

@@ -7,11 +7,11 @@ with open(sys.argv[1],"rb") as f:
         w = line[0:len(line)-1]
         dic.append(w)
 
-path = "../../DictForPaper/"
+path = sys.argv[3]
 out = open(path + "AbbMatch","wb") # abbreviation lists
 
 abbdic = {}
-with open(path + "abbrvs.count","rb") as f:
+with open(sys.argv[2] + "abbrvs.count","rb") as f:
     i = 0
     for line in f:
         i += 1
@@ -22,8 +22,8 @@ with open(path + "abbrvs.count","rb") as f:
         if wh in dic:
             abbdic[wh] = ab
 
-out1 = open("../../DictForPaper/AbMatchGrams","wb")
-out2 = open("../../DictForPaper/WholeMatchAb","wb")
+out1 = open(path+"AbMatchGrams","wb")
+out2 = open(path+"WholeMatchAb","wb")
 dic1 = {}
 dic2 = {}
 for w in abbdic:

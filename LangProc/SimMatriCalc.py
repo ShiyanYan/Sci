@@ -76,6 +76,10 @@ outfile3.write("average\n")
 outfile3.write(str(x/el))
 outfile3.close()
 
+with open(syspath+"pref.txt","w") as f:
+    for i in range(1,dicRange+1):
+        f.write("0"+"\n")
+
 # for i in range(1,dicRange+1):
 #     for j in range(1,dicRange+1):
 #         if (j==dicRange):

@@ -14,7 +14,7 @@ for line in dicFile:
     dic.append(line)
 dic = sorted(dic)
 
-inputfile = open("../../ACMdata/in.txt","r") #Consider the batch processing later
+inputfile = open("../../ACMdata/in.txt","r") #Only consider the abstracts here
 punc_list = ['!','"','#','$','%','&','\\',"'",'(',')','*','+',',','-','.','/',':',';','<','=','>','?','@','[',']','^','_','`','{','|','}','~']
 stop_word = stopwords.words("english")
 

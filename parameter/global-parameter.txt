@@ -1,0 +1,2 @@
+dicName=CategoryTermsSortedNoUniHuman
+workSpaceName=ClusterResultsHumanES4
