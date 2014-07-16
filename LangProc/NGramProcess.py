@@ -211,28 +211,29 @@ print "Begin Writing"
 # for t in wholegrams:
 #     outfile6.write(t+"\n")
 # outfile6.close()
+print len(NofGram)
 print "begin processing"
-NG = {}
-for t in NofGram:
-    i = 0
-    j = len(MergedDic)-1
-    f = False
-    while True:
-        if (i>=j): break
-        mid = (i+j)/2
-        if (t==MergedDic[mid]): f=True
-        if t<=MergedDic[mid]: 
-            j = mid
-        else:
-            i = mid + 1
-    if (t==MergedDic[i]): f = True
-    if f: 
-        NG[t] = NofGram[t]
+# NG = {}
+# for t in NofGram:
+#     i = 0
+#     j = len(MergedDic)-1
+#     f = False
+#     while True:
+#         if (i>=j): break
+#         mid = (i+j)/2
+#         if (t==MergedDic[mid]): f=True
+#         if t<=MergedDic[mid]: 
+#             j = mid
+#         else:
+#             i = mid + 1
+#     if (t==MergedDic[i]): f = True
+#     if f: 
+#         NG[t] = NofGram[t]
 
-NofGram = NG
+# NofGram = NG
 
 print "Begin Writing"
-outfile7 = open("../../ACMdata/NofGram","w")
+outfile7 = open("../../ACMdata/NofGram2","w")
 pickle.dump(NofGram,outfile7)
 outfile7.close()
 i = 0
