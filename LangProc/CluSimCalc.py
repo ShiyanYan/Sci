@@ -1,23 +1,30 @@
 #CluSimCalc.py the program to calculate similarity between clusters  the old version in ClusterSim.py is not useful now
 import cPickle as pickle
 import sys
+import math
 path = "../../ClusterResultsHumanES4/"
 DicForClu = pickle.load(open(path + "DicForClu.dump","rb"))
 exemplar = pickle.load(open(path + "exemplar.dump","rb"))
-dic = pickle.load(open(path + "dic","rb"))
-sim = open(path + "similarity","rb")
+dic = pickle.load(open(path + "dict","rb"))
+sim = open(path + "similarityFile","rb")
 
 outfile = open(path + "clusterSim","w") # output file should be an adjecent table
 numOfLinks = {}
 sumOfSim = {}
 
+print "Length of WordDic=", len(dic)
+tt = 0
 for line in sim:
+    tt += 1
+#    if tt>10: break
     ss = line.split("\t")
     n1 = int(ss[0])
     n2 = int(ss[1])
     simValue = float(ss[2][0:len(ss[2])-1])
-    w1 = dic[n1]
-    w2 = dic[n2]
+    w1 = dic[n1-1]
+    w2 = dic[n2-1]
+    if not w1 in DicForClu: continue
+    if not w2 in DicForClu: continue
     clu1 = DicForClu[w1]
     clu2 = DicForClu[w2]
     index = clu1 *1000 + clu2
@@ -30,10 +37,10 @@ for line in sim:
     else:
         sumOfSim[index] = simValue
 
-for tt in numOfLinks:
+for tt in sorted(numOfLinks):
     clu1 = tt / 1000
     clu2 = tt % 1000
     ex1 = exemplar[clu1]
-    ex2 = exemplar[cllu2]
-    si = float(sumOfSim[index]) / numOfLinks[index]
+    ex2 = exemplar[clu2]
+    si = float(sumOfSim[tt]) / math.sqrt(numOfLinks[tt])
     outfile.write( ex1 + "\t" + ex2 + "\t" + str(si) + "\n")  

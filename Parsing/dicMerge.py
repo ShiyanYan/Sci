@@ -1,6 +1,6 @@
 #dicMerge.py
-infile2 = open("../../Wiki/abbrvs.count.out")
-infile1 = open("../../ACMdata/test","r")
+infile2 = open("../../DictForPaper/OneHopIt5","r")
+infile1 = open("../../DictForPaper/MergedDicGramsNoUni","r")
 dic1 = []
 dic2 = []
 for t in infile1:
@@ -26,7 +26,7 @@ for t in infile2:
     if (dic1[mid]==t): flag = True
     if flag: df.append(t)
 
-outfile = open("../../ACMdata/output/combinedDicNoisyVersion","w")
+outfile = open("../../DictForPaper/Ex5","w")
 df = sorted(df)
 ff = False
 dfs = []

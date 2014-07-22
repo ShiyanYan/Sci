@@ -1,10 +1,17 @@
 #testRead.py
-import pickle
+import cPickle as pickle
 print "begin"
-infile = open("../../ACMdata/NofGram2","r")
+infile = open("../../ClusterResultsHumanES4/DicForClu.dump","r")
 dic = pickle.load(infile)
 t = 0
+
 print len(dic)
+for tt in dic:
+    print tt,dic[tt]
+    t += 1
+ #   if t>10: break
+
+"""
 dic2 = {}
 for tt in sorted(dic,key=dic.get,reverse=True):
     t += 1
@@ -19,4 +26,5 @@ for tt in sorted(dic2,key=dic2.get,reverse=True):
     #if t>1000: break
     if dic2[tt]<=5: break
     outfile.write(str(tt)+" "+str(dic[tt])+"\n")
+"""
      
