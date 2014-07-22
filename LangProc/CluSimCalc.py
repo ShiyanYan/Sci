@@ -37,10 +37,20 @@ for line in sim:
     else:
         sumOfSim[index] = simValue
 
+CluSim = {}
+
 for tt in sorted(numOfLinks):
     clu1 = tt / 1000
     clu2 = tt % 1000
     ex1 = exemplar[clu1]
     ex2 = exemplar[clu2]
     si = float(sumOfSim[tt]) / math.sqrt(numOfLinks[tt])
-    outfile.write( ex1 + "\t" + ex2 + "\t" + str(si) + "\n")  
+    outfile.write( ex1 + "\t" + ex2 + "\t" + str(si) + "\n")
+    if ex1 in CluSim:
+        CluSim[ex1][ex2] = si
+    else:
+        CluSim[ex1] = {}
+        CluSim[ex1][ex2] = si  
+
+outfile2 = open(path + "CluSimDic","w")
+pickle.dump(CluSim,outfile2)

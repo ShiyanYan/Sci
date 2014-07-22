@@ -1,2 +1,2 @@
-dicName=CategoryTermsSortedNoUniHuman
-workSpaceName=ClusterResultsHumanES4
+dicName=seed5s
+workSpaceName=ClusterResultsHumanHH1
