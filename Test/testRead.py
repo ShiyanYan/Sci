@@ -1,15 +1,16 @@
 #testRead.py
 import cPickle as pickle
 print "begin"
-infile = open("../../ClusterResultsHumanES4/DicForClu.dump","r")
+infile = open("../../ClusterResultsHumanHH1/CluSimDic","r")
 dic = pickle.load(infile)
 t = 0
 
 print len(dic)
+print dic['digital library']['data model']
 for tt in dic:
     print tt,dic[tt]
     t += 1
- #   if t>10: break
+    if t>2: break
 
 """
 dic2 = {}

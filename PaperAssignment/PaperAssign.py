@@ -56,7 +56,6 @@ for line in infile:
         flaga = True
     if line[0:2] == "FT":
     	flagf = True
-print k
 pickle.dump(IdMatchTopics,open(path + "IdMatchTopics","wb"))
 i = 0
 for j in IdMatchTopics:

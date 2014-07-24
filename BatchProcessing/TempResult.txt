@@ -1,0 +1,99 @@
+Length of WordDic= 6102
+Sub Papers Extraction Complete
+The author Carl Lagoze has published 20 papers in ACM.
+1 digital library 0.374429977976
+2 data model 0.0543906810036
+3 web page 0.0502177942539
+4 data management 0.05
+5 design patterns 0.05
+6 information retrieval 0.0439329526543
+7 user interface 0.0317852053375
+8 data mining 0.025682382134
+9 image retrieval 0.02
+10 machine learning 0.02
+Sum= 0.85
+GLscore =  0.00456273784585
+Entropy =  0.567975784762
+
+The author Eytan Adar has published 12 papers in ACM.
+1 search engines 0.259722222222
+2 web page 0.156944444444
+3 web 2.0 0.0833333333333
+4 artificial intelligence 0.0833333333333
+5 graphics hardware 0.0416666666667
+6 social network 0.0416666666667
+7 information retrieval 0.0416666666667
+8 data mining 0.0416666666667
+9 computer systems 0.0416666666667
+10 programming language 0.0416666666667
+Sum= 0.833333333333
+GLscore =  0.0057514070149
+Entropy =  0.803204551982
+
+The author Jon Kleinberg has published 63 papers in ACM.
+1 social network 0.126221302213
+2 data structure 0.0483525733526
+3 approximation algorithm 0.0406694215284
+4 social networks 0.0329534002153
+5 information retrieval 0.0277683144851
+6 game theory 0.0234888568222
+7 random graph 0.0208553791887
+8 recommender systems 0.018253968254
+9 web page 0.0180642402865
+10 data mining 0.0173119135421
+Sum= 0.746031746032
+GLscore =  0.000332613496293
+Entropy =  0.628086974924
+
+The author Mark Ackerman has published 51 papers in ACM.
+1 user interface 0.0658696594106
+2 information retrieval 0.0643790849673
+3 social network 0.0464052287582
+4 management system 0.0457516339869
+5 content analysis 0.0392156862745
+6 semantic web 0.0392156862745
+7 information technology 0.0385190046269
+8 software development 0.0351524517853
+9 business process 0.0252380089591
+10 open source 0.0245098039216
+Sum= 0.725490196078
+GLscore =  0.000335960993221
+Entropy =  0.664196555609
+
+The author Paul Resnick has published 25 papers in ACM.
+1 recommender systems 0.186666666667
+2 social science 0.0533333333333
+3 information systems 0.0419047619048
+4 open source 0.04
+5 social networks 0.04
+6 semantic web 0.04
+7 data mining 0.0285714285714
+8 user interface 0.0238095238095
+9 problem solving 0.02
+10 computer programming 0.02
+Sum= 0.6
+GLscore =  0.000901736296115
+Entropy =  0.53355822113
+
+The author Qiaozhu Mei has published 22 papers in ACM.
+1 information retrieval 0.306060606061
+2 optimization problem 0.0833333333333
+3 social network 0.0833333333333
+4 topic model 0.0545454545455
+5 similarity measure 0.0454545454545
+6 computer systems 0.0454545454545
+7 address space 0.0454545454545
+8 data mining 0.0378787878788
+9 design patterns 0.0227272727273
+10 software engineering 0.0227272727273
+Sum= 0.909090909091
+GLscore =  0.00385272701143
+Entropy =  0.771296255506
+
+Author	GLscore	Entropy	Simpson
+Carl Lagoze	0.00456273784585	0.567975784762	0.170300900914
+Mark Ackerman	0.000335960993221	0.664196555609	0.136367752164
+Jon Kleinberg	0.000332613496293	0.628086974924	0.124629523797
+Eytan Adar	0.0057514070149	0.803204551982	0.580223558172
+Paul Resnick	0.000901736296115	0.53355822113	0.324657372395
+Qiaozhu Mei	0.00385272701143	0.771296255506	0.0681838760821
