@@ -115,7 +115,6 @@ for au in AL:
     print "Scope = ",scope
     print
 
-print GLscore
 
 print "Author" + "\t" + "Entropy" + "\t" + "Entropy2" + "\t" + "Simpson" + "\t" + "1-Gini Index" + "\t" + "GLscore" + "\t"  + "Shiyan1"
 for au in GLscore:

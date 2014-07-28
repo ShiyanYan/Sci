@@ -7,14 +7,13 @@ DicForClu = pickle.load(open(path + "DicForClu.dump","rb"))
 exemplar = pickle.load(open(path + "exemplar.dump","rb"))
 dic = pickle.load(open(path + "dict","rb"))
 sim = open(path + "similarityFile","rb")
-output = open(path + "SimInside","wb")
+output = open(path + "SimInside.dump","wb")
 
 numOfLinks = {}
 sumOfSim = {}
 
 avInSim = {}
 
-print "Length of WordDic=", len(dic)
 tt = 0
 for line in sim:
     tt += 1
@@ -31,13 +30,21 @@ for line in sim:
     clu2 = DicForClu[w2]
     if clu1!=clu2: continue
     ex1 = exemplar[clu1]
-    numOfLinks[ex1] += 1
-    sumOfSim[ex1] += simValue
-
-for ex in numOfLinks: 
-    avsim = float(sumOfSim) / float(numOfLinks)
+    if ex1 in numOfLinks:
+        numOfLinks[ex1] += 1
+    else:
+        numOfLinks[ex1] = 1
+    if ex1 in sumOfSim:
+        sumOfSim[ex1] += simValue
+    else:
+        sumOfSim[ex1] = simValue
+outfile = open(path + "simInside.txt","wb")
+for ex in sorted(numOfLinks): 
+    avsim = float(sumOfSim[ex]) / float(numOfLinks[ex])
     avInSim[ex] = avsim
-    print ex,avsim
+
+for ex in sorted(avInSim,key=avInSim.get,reverse=True):
+    outfile.write(str(ex) + "\t" + str(avInSim[ex]) + "\n")
 
 pickle.dump(avInSim,output)
 

@@ -7,35 +7,53 @@ from bs4 import BeautifulSoup
 
 authorlist = []
 fileNames = glob.glob('../../../ACMdata/proceeding/*.xml')
-
+IDmatchName = {}
 cc = 0
-output = open("../../ACMdata/ID_Metadata_Proc.txt","wb")
+allauthor = []
+outdump = open("../../ACMdata/ID_AU.dump","wb")
+output = open("../../ACMdata/ID_AU_AF","wb")
 for f in fileNames:
     xml = open(f, 'rU').read()
     soup = BeautifulSoup(xml)
     cc  += 1 
     if cc % 100==0: print "Proc" +str(cc) + " Complete"
-    if cc>10: break
+#    if cc>10: break
     for ar in soup.findAll('article_rec'):
         Id = ar.find("article_id").text
+        IDmatchName[Id] = []
         output.write("ID "+ Id + "\n") # parsing ID
         
         Aus =  ar.findAll('au') 
-        aus = []
-        for au in Aus:
-            if au.find('person_id'):
-                aus.append([au.find('last_name').text + ', ' + au.find('first_name').text, au.find('person_id').text])
-
         if len(Aus) > 1:
-            output.write('AU ' + Aus[0].find('first_name').text + ' ' + Aus[0].find('middle_name').text + ' ' + Aus[0].find('last_name').text + '\n')
+            ss = Aus[0].find('first_name').text + ' ' + Aus[0].find('middle_name').text + ' ' + Aus[0].find('last_name').text
+            IDmatchName[Id].append(ss)
+            output.write('AU ' + ss + '\n')
+            allauthor.append(ss)
             for au in Aus[1:]:
-                output.write(' ' + au.find('first_name').text + ' ' + au.find('middle_name').text + ' ' + au.find('last_name').text + '\n')
+                ss =  au.find('first_name').text + ' ' + au.find('middle_name').text + ' ' + au.find('last_name').text
+                output.write(' ' + ss + '\n')
+                IDmatchName[Id].append(ss)
+                allauthor.append(ss)
         else:
             if (len(Aus)>=1):
-                output.write('AU ' + Aus[0].find('first_name').text + ' ' + Aus[0].find('middle_name').text + ' ' + Aus[0].find('last_name').text + '\n')
+                ss = Aus[0].find('first_name').text + ' ' + Aus[0].find('middle_name').text + ' ' + Aus[0].find('last_name').text
+                IDmatchName[Id].append(ss)
+                allauthor.append(ss)
+                output.write('AU ' + ss + '\n')
         for au in Aus:
             if au.find('affiliation'):
                 output.write('AF ' + au.find('affiliation').text + '\n')
+pickle.dump(IDmatchName,outdump)
 
 output.close()
+allauthor = sorted(allauthor)
+allauthor2 = []
+lastterm = ""
+for au in allauthor:
+    if au==lastterm: continue
+    allauthor2.append(au)
+    lastterm = au
 
+outAlldump = open("../../ACMdata/AuthorList_all.dump","wb")
+pickle.dump(allauthor2,outAlldump)
+print "TotalNum=",len(allauthor2)
