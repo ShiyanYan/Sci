@@ -1,0 +1,32 @@
+import urllib2, urllib
+import time
+import re
+
+urlprefix = "http://scholar.google.com/citations?hl=en&view_op=search_authors&"
+fin = open("tmp", "r")
+fout = open("scholar.txt", "w")
+reguid = re.compile(r".*user=([^&]*)&.*")
+regaut = re.compile(r'<a class="cit-dark-large-link" href="\/citations.user=([^&]+)[^>]+>(.*?)<\/a>')
+for line in fin:
+	line = line.strip()
+	url = urlprefix + urllib.urlencode({"mauthors":line})
+	res = urllib2.urlopen(url).read()
+	matches = re.findall(regaut, res)
+	if len(matches) == 0:
+		if "didn't match any user profiles" in res:
+			print line + "\t" + "not found"
+			fout.write(line + "\t" + "not found\n")
+		else:
+			print line + "\t error!"
+			fout.write(line + "\t error!\n")
+	else:
+		print line,
+		fout.write(line)
+		for match in matches:
+			href = match[0]
+			name = match[1]
+			name = re.sub(r'<\/?strong>', '', name)
+			print "\t" + name + "\t" + href
+			fout.write("\t[" + name + "]\t" + href)
+		fout.write("\n")
+	time.sleep(10)
