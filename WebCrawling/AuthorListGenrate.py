@@ -43,6 +43,7 @@ for f in fileNames:
         for au in Aus:
             if au.find('affiliation'):
                 output.write('AF ' + au.find('affiliation').text + '\n')
+        output.write("\n")
 pickle.dump(IDmatchName,outdump)
 
 output.close()
