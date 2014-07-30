@@ -46,12 +46,15 @@ for f in fileNames:
 pickle.dump(IDmatchName,outdump)
 
 output.close()
+print "Total Number of Authors=",len(allauthor)
 allauthor = sorted(allauthor)
-allauthor2 = []
+allauthor2 = {}
 lastterm = ""
 for au in allauthor:
-    if au==lastterm: continue
-    allauthor2.append(au)
+    if au==lastterm:
+        allauthor2[au] += 1
+        continue
+    allauthor2[au] = 1
     lastterm = au
 
 outAlldump = open("../../ACMdata/AuthorList_all.dump","wb")

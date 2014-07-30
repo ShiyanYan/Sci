@@ -4,7 +4,7 @@ import re
 import cPickle as pickle 
 
 urlprefix = "http://scholar.google.com/citations?hl=en&view_op=search_authors&"
-fin = pickle.load(open("../../ACMdata/AuthorList_all.dump", "r"))  # author list in dump 
+fin = pickle.load(open("../../ACMdata/AuthorList_above5.dump", "r"))  # author list in dump 
 fout = open("../../ACMdata/scholar.txt", "w")  #author list out txt
 AuthorMatchDic = {}
 foutdump = open("../../ACMdata/authorMatch.dump","wb") # write out the mapping between author names and names+IDs
@@ -13,8 +13,9 @@ regaut = re.compile(r'<a class="cit-dark-large-link" href="\/citations.user=([^&
 cc = 0
 for line in fin:
 	cc += 1
+	print cc
 	if cc% 100 ==0: print str(cc) + " authors Done!"
-    if cc>10: break
+#	if cc>10: break
 	line = line.strip()
 	url = urlprefix + urllib.urlencode({"mauthors":line})
 	res = urllib2.urlopen(url).read()
@@ -28,7 +29,7 @@ for line in fin:
 			fout.write(line + "\t error!\n")
 	else:
 		AuthorMatchDic[line] = {}
-		print line
+#		print line
 		fout.write(line)
 		for match in matches:
 			href = match[0]
