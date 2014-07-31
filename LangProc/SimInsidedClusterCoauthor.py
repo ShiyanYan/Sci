@@ -77,6 +77,11 @@ for p in papers:
             else:
                 AuthorMatchTopics[au][tot] = Topics[tot]
 
+AMT = open(path + "AuthorMatchTopics.dump","wb")
+pickle.dump(AuthorMatchTopics,AMT)
+PN = open(path + "AuthorPaperNum.dump","wb")
+pickle.dump(PaperNum,PN)
+
 AuthorMatchMajorTopics = {}
 
 
@@ -91,8 +96,11 @@ for au in AuthorMatchTopics:
         i += 1
         if i>2: break
         if AuthorMatchTopics[au][tot]<0.3: break
-        AuthorMatchMajorTopics[au].append(tot)
-
+        if au in AuthorMatchMajorTopics:
+            AuthorMatchMajorTopics[au].append(tot)
+        else:
+            AuthorMatchMajorTopics[au] = []
+            AuthorMatchMajorTopics[au].append(tot)
 SumOfPaperCohe = {}
 NumOfPaperCohe = {}
 

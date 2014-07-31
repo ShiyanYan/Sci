@@ -7,7 +7,7 @@ DicForClu = pickle.load(open(path + "DicForClu.dump","rb"))
 exemplar = pickle.load(open(path + "exemplar.dump","rb"))
 dic = pickle.load(open(path + "dict","rb"))
 sim = open(path + "similarityFile","rb")
-output = open(path + "SimInside.dump","wb")
+output = open(path + "SimInsideAve.dump","wb")
 
 numOfLinks = {}
 sumOfSim = {}
@@ -38,7 +38,7 @@ for line in sim:
         sumOfSim[ex1] += simValue
     else:
         sumOfSim[ex1] = simValue
-outfile = open(path + "simInside.txt","wb")
+outfile = open(path + "SimInsideAve.txt","wb")
 for ex in sorted(numOfLinks): 
     avsim = float(sumOfSim[ex]) / float(numOfLinks[ex])
     avInSim[ex] = avsim

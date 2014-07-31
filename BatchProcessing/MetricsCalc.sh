@@ -5,7 +5,7 @@ wordSpaceName=${workSpaceName}
 PATHE2=../../$wordSpaceName/
 #python ../LangProc/CluSimCalc.py ${workSpaceName}/
 #python ../LangProc/SimInsidedCluster.py $PATHE2
-python ../LangProc/SimInsidedClusterCitation.py $PATHE2 ../../ACMdata/ID_RF.dump
+python ../LangProc/SimInsidedCluster.py $PATHE2 ../../ACMdata/ID_RF.dump
 
 #cd ../SelfCitation/
 
