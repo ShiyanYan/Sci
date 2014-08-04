@@ -64,6 +64,7 @@ for p in papers:
     Id = p.ID 
     Aulist = p.AU
     Topics = IdMatchTopics[Id]
+    if len(Topics)==0: continue
     for au in Aulist:
         if au in PaperNum:
             PaperNum[au] += 1
