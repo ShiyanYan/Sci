@@ -7,13 +7,13 @@ path = "../../ACMdata/"
 AuMatchHindex = pickle.load(open(path + "HindexResults.dump","rb"))
 AuNameMatch = pickle.load(open(path + "HindexAuthorList.dump","rb"))
 
-path = "../../ClusterResultsHumanHH2/"
+path = sys.argv[1]
 AuMatchScores = pickle.load(open(path + "AuMatchScores.dump","rb"))
 
 
 output = open(path + "ScoresHindexNoAu.csv" ,"wb")
 
-startline = "Entropy,Entropy2,Simpson,Gini,GLscore,Shiyan1,"
+startline = sys.argv[2]
 
 startline = startline + "CitNum,CitNum09,Hin,Hin09,I10,I1009\n"
 

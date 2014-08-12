@@ -1,6 +1,8 @@
 # Generate the final scores for every metric
-import metricesCal
 import sys
+sys.path.append("../Time-series/")
+import metricesCal
+
 import cPickle as pickle
 import math
 
@@ -8,7 +10,7 @@ path = "../../ACMdata/"
 
 Authorlist = pickle.load(open(path + "HindexAuthorList.dump","rb"))
 
-path = "../../ClusterResultsHumanHH2/"
+path = sys.argv[1]
 AuMatchIDmatchTopics = pickle.load(open(path+"AuMatchIDmatchTopics.dump","rb"))
 
 

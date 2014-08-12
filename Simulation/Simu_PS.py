@@ -1,0 +1,116 @@
+# the second version of simulation codes, a combination of the three different simulation procedures
+import sys
+import cPickle as pickle
+import math
+import random
+
+path = "../../ACMdata/"
+
+Authorlist = pickle.load(open(path + "HindexAuthorList.dump","rb"))
+
+
+path = "../../ClusterResultsHumanHH2/"
+AuMatchIDmatchTopics = pickle.load(open(path+"AuMatchIDmatchTopics.dump","rb"))
+exemplar = pickle.load(open(path + "exemplar.dump","r"))
+PaperNum = pickle.load(open(path + "AuthorPaperNum.dump","r"))
+Cohe = pickle.load(open(path + "SimInsideCoauthor.dump","r"))
+CluSimDic = pickle.load(open(path + "CluSimDic","r"))
+def newAreaGenerate(AreaAlready):
+    tt = len(exemplar)
+    while True:
+        newin = random.randint(0,tt-1)
+        newex = exemplar[newin]
+        if not newex in AreaAlready:
+            return newex
+def MetriCal(Topics,alpha,beta,gamma):
+    j = 0
+    scorelist = {}
+    topiclist = {}
+    for tot in sorted(Topics,key=Topics.get,reverse=True):
+        j += 1
+        topiclist[j] = tot
+        scorelist[j] = Topics[tot]
+    scope = j
+
+    Shiyan2score = 0
+    for i in range(1,scope+1):
+        for j in range(i+1,scope+1):
+            if not topiclist[i] in CluSimDic: continue
+            if not topiclist[j] in CluSimDic[topiclist[i]]: continue
+            si = CluSimDic[topiclist[i]][topiclist[j]]
+            if (topiclist[i] in Cohe) and (topiclist[j] in Cohe): Shiyan2score += math.pow(si,alpha) * math.pow(scorelist[i]+scorelist[j],beta) * math.pow( Cohe[topiclist[i]]*Cohe[topiclist[j]],gamma)
+    return Shiyan2score
+
+cc = 0
+
+totN = 0
+
+S1S = 0
+S2S = 0
+S3S = 0
+
+output = open(path + "SimulationPSResults.csv","wb")
+output.write("Alpha,Beta,Gamma,Simu1,Simu2,Simu3\n")
+for alpha in range(-5,6):
+    for beta in range(-5,6):
+        for gamma in range(-5,6):
+            print "Alpha = ",alpha
+            print "Beta = ",beta
+            print "Gamma = ",gamma
+            cc = 0
+            totN = 0
+            S1S = 0
+            S2S = 0 
+            S3S = 0
+            for au in Authorlist:
+                if not au in AuMatchIDmatchTopics: continue
+                if not au in PaperNum: continue
+                cc += 1
+                if cc % 1000==0: print str(cc) + " Complete!"
+                Topics = {}
+                IdmatchTopics = AuMatchIDmatchTopics[au]
+                if len(IdmatchTopics)<1: continue
+                for Id in IdmatchTopics:
+                    for tot in IdmatchTopics[Id]:
+                         if tot in Topics: Topics[tot] += IdmatchTopics[Id][tot]
+                         else: Topics[tot] = IdmatchTopics[Id][tot]
+                for tot in Topics:
+                    Topics[tot] = float(Topics[tot]) / float(len(IdmatchTopics))
+                if len(Topics)<1: continue
+                scores0 = MetriCal(Topics,alpha,beta,gamma)
+    
+                Topics2 = Topics
+                j = 0
+                for tot in sorted(Topics2,key=Topics2.get,reverse=True):
+                    j += 1
+                    if j>1: 
+                        Topics2[tot] = Topics2[tot] * float(PaperNum[au]) / float(PaperNum[au] + 1)
+                    else:
+                        Topics2[tot] = Topics2[tot] * float(PaperNum[au]) / float(PaperNum[au] + 1) + float(1) / float(PaperNum[au] + 1)
+                scores1 = MetriCal(Topics2,alpha,beta,gamma)
+    
+                Topics3 = Topics
+                for tot in Topics3:
+                    Topics3[tot] = Topics3[tot] * float(PaperNum[au]) / float(PaperNum[au] + 1)
+                T = newAreaGenerate(Topics)
+                Topics3[T] = float(1) / float(PaperNum[au] + 1)
+    
+                scores2 = MetriCal(Topics3,alpha,beta,gamma)
+    
+                Topics4 = Topics3
+                for tot in Topics4:
+                    Topics4[tot] = Topics4[tot] * float(PaperNum[au] + 1) / float(PaperNum[au] + 2)
+                T = newAreaGenerate(Topics3)
+                Topics4[T] = float(1) / float(PaperNum[au] + 2)
+                scores3 = MetriCal(Topics4,alpha,beta,gamma)
+                totN += 1
+                if scores1<=scores0: S1S += 1
+                if scores2>=scores0: S2S += 1
+                if (scores2>=scores0) and (scores3>=scores2) and (scores3-scores2<=scores2-scores0): S3S += 1
+
+
+            print "The Results" + " is:"
+            print "Simu1: " + str(float(S1S) / float(totN)) + " Simu2: " + str(float(S2S)/float(totN)) + " Simu3: " + str(float(S3S)/float(S2S))
+            output.write(str(alpha) + "," + str(beta) + "," + str(gamma) + "," + str(float(S1S)/float(totN)) + "," + str(float(S2S)/float(totN)) + "," + str(float(S3S)/float(S2S)) + "\n")
+
+output.close()

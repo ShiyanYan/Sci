@@ -12,7 +12,7 @@ IDmatchAuthor = pickle.load(open(path + "ID_AU.dump","rb"))
 IDmatchYear = pickle.load(open(path + "ID_Year.dump","rb"))
 Authorlist = pickle.load(open(path + "HindexAuthorList.dump","rb"))
 
-path = "../../ClusterResultsHumanHH2/"
+path = sys.argv[1]
 IDmatchTopics = pickle.load(open(path + "IdMatchTopics","rb"))
 AuMatchIDmatchTopics = pickle.load(open(path+"AuMatchIDmatchTopics.dump","rb"))
 
@@ -22,7 +22,7 @@ totN = {} #by year
 cc = 0
 for authorname in Authorlist:
     cc += 1
-    print str(cc) + " Complete!"
+    if cc % 1000 ==0: print str(cc) + " Complete!"
 #    if cc>3: break
     if not authorname in AuMatchIDmatchTopics: continue
     for Id in AuMatchIDmatchTopics[authorname]:

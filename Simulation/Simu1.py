@@ -3,16 +3,38 @@ import sys
 import math
 import cPickle as pickle
 
+IDmatchAuthor = pickle.load(open("../../ACMdata/" + "ID_AU.dump","rb"))
 #Get Necessary information
 path = "../../ClusterResultsHumanHH2/"
 
 print "Begin Reading Files"
-AuthorMatchTopics = pickle.load(open(path + "AuthorMatchTopics.dump","r"))
+#AuthorMatchTopics = pickle.load(open(path + "AuthorMatchTopics.dump","r"))
 PaperNum = pickle.load(open(path + "AuthorPaperNum.dump","r")) # Actually ACP
 Examplar = pickle.load(open(path + "exemplar.dump","r"))
 CluSimDic = pickle.load(open(path + "CluSimDic","r"))
+AuthorList = pickle.load(open("../../ACMdata/HindexAuthorList.dump","r"))
+cc = 0
+AuthorMatchTopics = {}
+IDmatchTopics = pickle.load(open(path + "IdMatchTopics","rb"))
+authortot = {}
+for Id in IDmatchAuthor:
+    cc += 1
+    if cc % 100000==0: print str(cc) + " Complete!"
+    for au in IDmatchAuthor[Id]:
+        if not au in AuthorList: continue
+        if not au in AuthorMatchTopics: AuthorMatchTopics[au] = {}
+        if not au in authortot: authortot[au] = 1
+        else: authortot[au] += 1
+        for tot in IDmatchTopics[Id]:
+            if tot in AuthorMatchTopics[au]:
+                AuthorMatchTopics[au][tot] += IDmatchTopics[Id][tot]
+            else:
+                AuthorMatchTopics[au][tot] = IDmatchTopics[Id][tot]
 
-AuthorList = pickle.load(open("../../ACMdata/AuthorList_above5.dump","r"))
+for au in AuthorMatchTopics:
+    for tot in AuthorMatchTopics[au]:
+        AuthorMatchTopics[au][tot] = AuthorMatchTopics[au][tot] / float(authortot[au])
+
 
 temp = {}
 for au in AuthorMatchTopics:
@@ -35,10 +57,11 @@ GiniOld = {}  # actually 1 - Gini
 Shiyan1Old = {}
 print "Begin to calculate the old scores of metrics"
 
-alpha = -0.5
+alpha = -1
 beta = 2
 
 for au in AuthorMatchTopics:
+    if not au in AuthorList: continue
     Topics = AuthorMatchTopics[au]    
     en = 0
     en2 = 0
@@ -89,6 +112,7 @@ print "Begin to generate New assignment for Simulation1"
 
 
 for au in AuthorMatchTopics:
+    if not au in AuthorList: continue
     PaperN = PaperNum[au]
     OldTopics = AuthorMatchTopics[au]
     Topics = {}
@@ -114,6 +138,7 @@ GiniNew = {}  # actually 1 - Gini
 Shiyan1New = {}
 
 for au in AuthorMatchTopicsNew:
+    if not au in AuthorList: continue
     Topics = AuthorMatchTopicsNew[au]
     en = 0
     en2 = 0
@@ -167,16 +192,18 @@ SimpPro = 0
 GiniPro = 0
 GLscorePro = 0
 Shiyan1Pro = 0
-
+AN = 0
 for au in AuthorMatchTopics:
+    if not au in AuthorList: continue
     if entropyOld[au]>=entropyNew[au]: entropyPro += 1
     if entropy2Old[au]>=entropyNew[au]: entropy2Pro += 1
     if SimpOld[au]>=SimpNew[au]: SimpPro += 1
     if GiniOld[au]>=GiniNew[au]: GiniPro += 1
     if GLscoreOld[au]>=GLscoreNew[au]: GLscorePro += 1
     if Shiyan1Old[au]>=Shiyan1New[au]: Shiyan1Pro += 1
+    AN += 1
 
-AN = len(AuthorMatchTopics)
+#AN = len(AuthorMatchTopics)
 
 entropyPro = float(entropyPro) / float(AN)
 entropy2Pro = float(entropy2Pro) / float(AN)
@@ -192,4 +219,4 @@ print "GiniPro = ",GiniPro
 print "GLscorePro = ",GLscorePro
 print "Shiyan1Pro = ",Shiyan1Pro
 
-
+print AN

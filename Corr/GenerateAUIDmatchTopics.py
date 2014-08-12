@@ -8,7 +8,7 @@ path = "../../ACMdata/"
 IDmatchAuthor = pickle.load(open(path + "ID_AU.dump","rb"))
 Authorlist = pickle.load(open(path + "HindexAuthorList.dump","rb"))
 
-path = "../../ClusterResultsHumanHH2/"
+path = sys.argv[1]
 IDmatchTopics = pickle.load(open(path + "IdMatchTopics","rb"))
 
 
