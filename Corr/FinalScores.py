@@ -1,4 +1,4 @@
-# Generate the final scores for every metric
+# Generate the final scores for every metric, store in the AuMatchScores.dump
 import sys
 sys.path.append("../Time-series/")
 import metricesCal
@@ -25,7 +25,7 @@ for au in Authorlist:
     if cc % 1000==0: print str(cc) + " Complete!"
     if not au in AuMatchIDmatchTopics: continue
     Topics = {}
-    IdmatchTopics = AuMatchIDmatchTopics[au]
+    IdmatchTopics = dict(AuMatchIDmatchTopics[au])
     if len(IdmatchTopics)<1: continue
     for Id in IdmatchTopics:
         for tot in IdmatchTopics[Id]:
