@@ -4,8 +4,8 @@ import math
 
 path = "../../ACMdata/"
 
-AuMatchHindex = pickle.load(open(path + "HindexResults.dump","rb"))
-AuNameMatch = pickle.load(open(path + "HindexAuthorList.dump","rb"))
+AuMatchHindex = pickle.load(open(path + "HindexResults.dump","rb")) # Used the names crawled
+AuNameMatch = pickle.load(open(path + "HindexAuthorList.dump","rb"))  # Used the names in the origninal .xml files
 
 path = sys.argv[1]
 AuMatchScores = pickle.load(open(path + "AuMatchScores.dump","rb"))

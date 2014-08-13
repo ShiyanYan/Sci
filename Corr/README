@@ -1,0 +1,7 @@
+Codes in this directory are for calculation of correlations between Breadth of research metrics and the Scientfic Influence metrics
+
+FinalScores.py is for generation of Breadth of research scores for every users
+
+GenneratAUIDmatchTopics.py is for generate the big dictionary for Author matching their ID-Topics Maps
+
+integrateData.py is for integration of the twwo kinds of metrics, saved in ScoresHindexNoAu.csv in the end.
