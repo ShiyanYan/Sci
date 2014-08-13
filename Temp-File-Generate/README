@@ -1,0 +1,4 @@
+The files in this directory is for generation of temporary files.
+
+GenerateClosestArea.py: the code to generate the closest area for every area. Saved in "ClosestArea.dump", the input file include: "CluSimDic" the dictionary for the cluster similarity
+

@@ -1,0 +1,15 @@
+The codes in this directory are all for simulation experiments
+
+SimuOvearall.py: the code to run the whole simulation experiments
+    simu1: add one largest probability area
+    simu2: add one random new area
+    simu3: add the second random new area and test the marginally decreasing
+    simu4: add the closet area
+
+SimuOverall_S.py: the code to run the whole simulation experiments, but the conditions will be strict(> rather >=)
+
+Simu_PS.py: The code to tune the parameter and look at the influence of parameters, the results will be saved in csv format named SimulationPSResults.csv
+
+Simu_PS.py: The code to tune the parameters but with strict condition: the results will be saved in csv format named SimulationPSResults_S.csv
+
+Simu1,2,3,3.2,3.3: this file is not up to date now.
