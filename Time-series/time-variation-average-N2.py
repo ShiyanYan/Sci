@@ -123,11 +123,11 @@ for year in scoreTot:
 print totN
 print "Printing the .csv file"
 
-output = open("../../ClusterResultsHumanHH2/metricsAve1.csv","w")
+output = open(path + "metricsAve2.csv","w")
 k = 0
 scorepre = []
 scorenow = []
-output.write("Year,Entropy,Entropy2,Simpson,Gini,GLscore,Shiyan1,Shiyan2\n")  #should be changed when the shell scripts are written
+output.write(sys.argv[2] + "\n")  #should be changed when the shell scripts are written
 for year in sorted(scoreTot):
     k += 1
     scorenow = list(scoreTot[year])
