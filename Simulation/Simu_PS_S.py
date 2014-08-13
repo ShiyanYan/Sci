@@ -130,7 +130,7 @@ for alpha in range(-5,6):
                 Topics5 = dict(Topics)
                 for tot in Topics5:
                     Topics5[tot] = Topics5[tot] * float(PaperNum[au]) / float(PaperNum[au] + 1)
-                T = closestAreaGenerate[Topics5]
+                T = closestAreaGenerate(Topics5)
                 Topics5[T] = float(1) / float(PaperNum[au] + 1)
                 scores4 = MetriCal(Topics5,alpha,beta,gamma)
 
