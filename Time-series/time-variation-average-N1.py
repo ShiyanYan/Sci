@@ -117,7 +117,7 @@ output = open(path + "metricsAve1.csv","w")
 k = 0
 scorepre = []
 scorenow = []
-output.write(sys.argv[2]+"\n")  #should be changed when the shell scripts are written
+output.write("Year," + sys.argv[2]+"\n")  #should be changed when the shell scripts are written
 for year in sorted(scoreTot):
     k += 1
     scorenow = list(scoreTot[year])
