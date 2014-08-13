@@ -11,7 +11,7 @@ echo "Calculate scores for authors"
 python FinalScores.py ${workSpaceName}
 
 echo "Begin integrating data"
-python integrateData.py ${workSpaceName} Entropy,Entropy2,Simpson,Gini,GLscore,Shiyan1,
+python integrateData.py ${workSpaceName} Entropy,Entropy2,Simpson,Gini,GLscore,Shiyan1,Shiyan2
 echo "Correlation Files Done"
 
 echo "Begin Time-series Generation"

@@ -15,7 +15,7 @@ output = open(path + "ScoresHindexNoAu.csv" ,"wb")
 
 startline = sys.argv[2]
 
-startline = startline + "CitNum,CitNum09,Hin,Hin09,I10,I1009\n"
+startline = startline + ",CitNum,CitNum09,Hin,Hin09,I10,I1009\n"
 
 output.write(startline)
 for au in AuMatchScores:
