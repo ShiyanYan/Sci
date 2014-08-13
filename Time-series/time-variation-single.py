@@ -1,4 +1,4 @@
-# the time variation of single author/authors.
+# the time variation of single author.   Not update yet.
 import metricesCal
 import cPickle as pickle
 import sys

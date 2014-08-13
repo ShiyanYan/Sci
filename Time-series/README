@@ -1,0 +1,5 @@
+The codes in this directory is used for generation the metrics time series of each users or average users. 
+For each user, the code (time-variation-single.py)(not updated now) can generate a .csv file for R to draw the graph
+For average users, the codes (time-variation-average-N1/N2.py  with different normalization) can generate the .csv file for R to draw the graph also.
+
+The file metricesCal.py is very important. It provde the function to calculate all the values of metrics. It will be imported by many other codes in this project.

@@ -1,4 +1,5 @@
 # The sub codes to compute the metrices for every assignment
+# This code will be imported by many other codes to calculate the scores of metrics
 import sys
 import math
 import cPickle as pickle
@@ -7,7 +8,7 @@ path = "../../ClusterResultsHumanHH2/"
 Examplar = pickle.load(open(path + "exemplar.dump","r"))
 CluSimDic = pickle.load(open(path + "CluSimDic","r"))
 Cohe = pickle.load(open(path + "SimInsideCoauthor.dump","r"))
-MetricsNum = 7
+MetricsNum = 7  # The number of metrics
 alpha = -5
 beta = 1
 gamma = -1
@@ -54,11 +55,11 @@ def MetriCal(Topics):
             GLscore += math.pow(si,alpha) * math.pow(scorelist[i]*scorelist[j],beta)
             Shiyan1score += math.pow(si,alpha) * math.pow(scorelist[i]+scorelist[j],beta)
             if (topiclist[i] in Cohe) and (topiclist[j] in Cohe): Shiyan2score += math.pow(si,alpha) * math.pow(scorelist[i]+scorelist[j],beta) * math.pow(1 / (Cohe[topiclist[i]]*Cohe[topiclist[j]]),gamma)
-    results[0] = en
-    results[1] = en2
-    results[2] = Simp
-    results[3] = float(totq) / float(len(Topics))
-    results[4] = GLscore
-    results[5] = Shiyan1score
-    results[6] = Shiyan2score
+    results[0] = en # entropy
+    results[1] = en2 # entropy2
+    results[2] = Simp # simpson
+    results[3] = float(totq) / float(len(Topics)) # 1 - Gini Index
+    results[4] = GLscore # Generalized Stirling
+    results[5] = Shiyan1score # Shiyan1
+    results[6] = Shiyan2score # Shiyan2
     return results
