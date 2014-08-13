@@ -41,7 +41,7 @@ def closestAreaGenerate(AreaAlready):
     ClsArea = ""
     for tot in AreaAlready:
         if not tot in CluSimDic: continue
-        a1 = ClosestArea[tot]
+        a1 = dict(ClosestArea[tot])
         for nt in a1:
             if nt in AreaAlready: continue
             if ClosestArea[tot][nt]>HstSim:
@@ -79,7 +79,7 @@ for au in Authorlist:
     cc += 1
     if cc % 1000==0: print str(cc) + " Complete!"
     Topics = {}
-    IdmatchTopics = AuMatchIDmatchTopics[au]
+    IdmatchTopics = dict(AuMatchIDmatchTopics[au])
     if len(IdmatchTopics)<1: continue
     ACP = 0
     for Id in IdmatchTopics:
@@ -107,7 +107,7 @@ for au in Authorlist:
     Topics3 = dict(Topics)
     for tot in Topics3:
         Topics3[tot] = Topics3[tot] * float(PaperNum[au]) / float(PaperNum[au] + 1)
-    T = newAreaGenerate(Topics)
+    T = newAreaGenerate(Topics3)
     if T in Topics: print "ERROR"
     Topics3[T] = float(1) / float(PaperNum[au] + 1)
     scores2 = metricesCal.MetriCal(Topics3)
@@ -115,9 +115,10 @@ for au in Authorlist:
     Topics4 = dict(Topics3)
     for tot in Topics4:
         Topics4[tot] = Topics4[tot] * float(PaperNum[au] + 1) / float(PaperNum[au] + 2)
-    T = newAreaGenerate(Topics3)
+    T = newAreaGenerate(Topics4)
     Topics4[T] = float(1) / float(PaperNum[au] + 2)
     scores3 = metricesCal.MetriCal(Topics4)
+
     Topics5 = dict(Topics)
  #   print Topics5
     for tot in Topics5:
@@ -133,7 +134,7 @@ for au in Authorlist:
         if (scores2[i]>=scores0[i]) and (scores3[i]>=scores2[i]) and (scores3[i]-scores2[i]<=scores2[i]-scores0[i]): S3S[i] += 1
         if scores4[i]>=scores0[i]: S4S[i] += 1
 
-print "The results of simulation for all the metrices"
+print "The results of simulation for all the metrics"
 
 output = open(path + "SimulationResults.csv","wb")
 output.write("MetricName,Simu1,Simu2,Simu3,Simu4\n")
