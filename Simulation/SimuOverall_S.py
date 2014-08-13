@@ -50,7 +50,6 @@ def closestAreaGenerate(AreaAlready):
     if ClsArea!="": 
         return ClsArea
     else:
-        print "!!" 
         return newAreaGenerate(AreaAlready) #changed
 
 
