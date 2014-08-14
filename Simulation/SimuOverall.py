@@ -142,6 +142,6 @@ output.write("MetricName,Simu1,Simu2,Simu3,Simu4\n")
 for i in range(0,Nmetrics):
     print "The Results of " + MetricsNames[i] + " is"
     print "Simu1: " + str(float(S1S[i]) / float(totN)) + " Simu2: " + str(float(S2S[i])/float(totN)) + " Simu3: " + str(float(S3S[i])/float(S2S[i])) + " Simu4: " + str(float(S4S[i])/float(totN))
-    output.write(str(float(S1S[i])/float(totN)) + "," + str(float(S2S[i])/float(totN)) + "," + str(float(S3S[i])/float(S2S[i])) + "," + str(float(S4S[i])/ float(totN))  + "\n")
+    output.write( str(MetricsNames[i]) + "," + str(float(S1S[i])/float(totN)) + "," + str(float(S2S[i])/float(totN)) + "," + str(float(S3S[i])/float(S2S[i])) + "," + str(float(S4S[i])/ float(totN))  + "\n")
 
 output.close()
