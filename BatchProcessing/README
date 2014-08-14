@@ -1,0 +1,7 @@
+The shell scripts in this directory are the batch processing codes.
+
+apcluster-preporocess.sh: The scripts make use of three scripts from /LangProc. The process is mainly about get the occurence similarity between grams in th dict. The similarityFile store the similarity information that are useful for apcluster
+
+apcluster.sh: The script to run the apcluster codes. input files contain: similarityFile and pref.txt. The clustering results will be processed by TopicsShow.py in /TopicExtract 
+
+paperAssign.sh: The script used to assign the papers according to the results of previous clustering

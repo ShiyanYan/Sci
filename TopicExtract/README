@@ -1,0 +1,6 @@
+The files in this directory is about illustration of clustering results.
+
+TopicsShow.py: used to extract the clustering results from apcluster/idx.txt.
+The overall clustering results will be saved in apcluster/ResultsText.txt.  The exemplars will be saved in exemplar.dump (a list begin from 1 not 0).   Another result file is DicForClu (a dictionary [gram: exemplar (the number not the string)], the number can be matched to string using exmemplar.dump)
+
+  

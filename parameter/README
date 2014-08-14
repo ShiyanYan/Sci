@@ -1,0 +1,7 @@
+The files in this directory are parameters setting for the project
+
+authorlist: a list of authors used for testing
+
+global-parameter.txt: a list of parameters used by many batch processing shell scripts:
+	dicName: the dictionary generated for paper assignment
+	workSpaceName: the work space directory to save all the results files

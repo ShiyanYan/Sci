@@ -1,0 +1,8 @@
+The codes in this directory are all about crawling authors profiles from Google Scholar
+
+scrape_google_scholar.py: The codes are used to use the search engine of google scholar to prepare for getting the profiles of authors. The url get methods will get 0/1/several names found by google scholar and the profile ID for these names. 
+The crawled results are stored in scholars.txt in ACMdata directory. And the authorMatch.dump ( dict[name in .xml files][name searched by google scholar] = the profile ID ) is saved in the same directory
+
+NameProcess.py: The code is used to process the name in authorMatch.dump. It can judge whether the name can only be matched to one correct name searched by google scholar. The results files named HindexAuthorList.txt and HindexAuthorList.dump are stored in ACMdata directory. HindexAuthorList.dump has the similar structure of authorMatch.dump
+
+getHindex.py: The code use the IDs in HindexAuthorList.dump to get the Hindex scores for authors from google scholar. The six metrics are: CitationNumber, CitationNumberSince2009, Hindex, HindexSince2009, i10(number of papers with at least 10 citations), i10Since2009. The results are stored in ACMdata directory named as HindexResults.txt and HindexResults.dump

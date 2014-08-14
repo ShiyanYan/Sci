@@ -33,7 +33,7 @@ MAX = 0
 for item in dicLink:
     ss = item.split("\t")
     #print dicLink[item
-    if dicLink[item]>MAX: MAX = dicLink[item]
+    if dicLink[item]>MAX: MAX = dicLink[item]   #the max value of cooccurence
     outfile.write(ss[0] + "\t" + ss[1] + "\t" + str(dicLink[item]) + "\n")
 
 outfile.close()

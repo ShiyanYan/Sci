@@ -1,0 +1,8 @@
+The codes in this directory is used for the name disambiguity developed by Theresa:
+
+The perl script that does the name disambiguation is attached. IIt requires as input a file that specifies name commonality. I have  a python script that derives those values from the input file (i.e. how many different variants of initials show up in your data file for the same last name - the assumption is the more different initials are found the more common the last name). 
+
+Altogether there are two python scripts I usually run first before running the perls script. I am attaching them and the shell script that does these three steps as a batch process. The parameter file that it uses is called: 'parameters-disambiguate' and only has two values that are used for file naming and finding paths in my directory tree:
+
+project=Field3
+rundir=field3run2

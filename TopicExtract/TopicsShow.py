@@ -1,7 +1,7 @@
 import cPickle as pickle
 import sys
 path = sys.argv[1]
-dic = pickle.load(open(path+"outdic","r"))
+dic = pickle.load(open(path+"outdic","r"))  #id match gram
 i = 0
 print len(dic)
 assign = {}

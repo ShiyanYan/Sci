@@ -1,0 +1,3 @@
+The codes in this directory are mainly used for assign the papers according to the clustering results generated previously. 
+
+AbbrevDetect.py: The codes to detect the abbreviation of grams in the abstracts and fulltext of papers. 

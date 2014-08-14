@@ -1,0 +1,8 @@
+The codes in this directory are mainly for process the text files. Some of the codes processing the text files may be moved to the Temp-File-Generate directory
+
+occurrencCount.py: The codes to count in every documents, what are the grams exist. 
+The input file is ACMdata/in.txt, the output file is gramlist in the results directory. Every line of gramlist will contain a list of grams seperated by \t show the grams in the documents
+
+co-occurrenceDetection.py: The codes are used for detect the cooccurrence of grams. The input file is gramlist. The output file is dict (a dictionary to store all the grams) and word-links (saved the co occurenece information)
+
+SimMatriCalc.py: The codes to generate the similarity files for the pairs of words. the similarity values are stored in similarityFile. The summary information for the similarity calculation are stored in Summary. pref.txt which is used for the codes of apcluster is generated also. All the pref values are set 0 now. (could be set as the average of similarity. But not sure whether the clustering process will converge or not)
