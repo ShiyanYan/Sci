@@ -17,7 +17,7 @@ cc  = 0
 print cc
 for Id in IdMatchTopics:
     if not Id in ID_RF: continue
-    RFlist = ID_RF[Id]
+    RFlist = list(ID_RF[Id])
     N = len(RFlist)
     tt = 0
     cc += 1

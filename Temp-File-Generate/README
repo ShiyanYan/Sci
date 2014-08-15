@@ -15,11 +15,12 @@ co-occurrenceDetection.py: The codes are used for detect the cooccurrence of gra
 
 SimMatriCalc.py: The codes to generate the similarity files for the pairs of words. the similarity values are stored in similarityFile. The summary information for the similarity calculation are stored in Summary. pref.txt which is used for the codes of apcluster is generated also. All the pref values are set 0 now. (could be set as the average of similarity. But not sure whether the clustering process will converge or not)
 
-CluSimCalc.py:
+CluSimCalc.py: The codes to calculate the similiarity between Clusters (average similarity of the grams). It will use files DicForClu.dump, exemplar.dump, dict and similarityFile. The similarity results will be printed to clusterSim(txt) and CluSimDic(pickle dump) in the result directory. 
 
-SimInsidedClusterAveDis.py
+CoherenceAveDis.py: The codes to calculate the average similarity within clusters (as the Coherence). It will use DicForClu.dump, exemplar.dump, dict, similarityFile. The results will be saved in SimInsideAve.txt and SimInsideAve.dump in the result directory
 
-SimInsidedClusterCitation.py
+CoherenceCitation.py: The code to calculate the coherence based on the citation information(how many cited papers are from the same topics as the source paper). It will use IdMatchTopics from results directory and ID_RF.dump from ACMdata directory. The output file including SimInsideCitation.txt and SimInsideCitation.dump(a dictionary) will be saved in the result directory.
 
-SimInsidedClusterCoauthor.py
+CoherenceCoauthor.py: The code to calculate the coherence based on the coauthor information(how many authors in the paper regard the topics as their major topics). It will use IdMatchTopics from results directory. The output file including SimInsideCoauthor.dump and SimInsideCoauthor.txt will be saved in the result directory.
+*Also the AuthorMatchTopics.dump and AuthorPaperNum.dump are generated and printed from this script
 

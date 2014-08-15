@@ -1,0 +1,9 @@
+The codes in this directory are mainly for processing the dictionary to be used. Some of other codes are stored in LangProc
+
+CStermsExtract.py: The codes to extract the words in X hops from "Computer Science" in wikipedia links.
+
+dicMerge.py: Merge (Union) to dics and print out the merged new dic
+
+easyStemming.py: The codes to stem grams easily (eliminate es/ s in the end)
+
+OneHopNeibExtract.py: Get the one hop neighbors in the wikipedia links (not in the original dictionary) and try to add them in the next iteration of dictionary expand.

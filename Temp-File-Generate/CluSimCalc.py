@@ -2,7 +2,7 @@
 import cPickle as pickle
 import sys
 import math
-path = "../../" + sys.argv[1]
+path = sys.argv[1]
 DicForClu = pickle.load(open(path + "DicForClu.dump","rb"))
 exemplar = pickle.load(open(path + "exemplar.dump","rb"))
 dic = pickle.load(open(path + "dict","rb"))

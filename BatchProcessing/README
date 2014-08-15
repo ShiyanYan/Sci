@@ -8,4 +8,6 @@ paperAssign.sh: The script used to assign the papers according to the results of
 
 showAuthorAssign.sh: The script used to show some the topic assignment results for specific authors.
 
-MetricsCalc.sh: 
+MetricsCalc.sh: The script will use many codes that calculate scores for some metrics
+
+CoheCalc.sh: The script will calculate the coherence of every cluster according to the Average Distance, Coauthor Porportion and Citation information. And the similarity between clusters (average gram similarity)

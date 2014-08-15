@@ -10,7 +10,7 @@ class Paper:
         self.AU = []
 
 # Read the paper ID & AU
-paperPath = "../../ACMdata/ID_AU_AF"
+paperPath = sys.argv[2]
 papers = []
 def readPaperFromFile(File):
     inFile = open(str(File), "r")
@@ -51,7 +51,7 @@ readPaperFromFile(paperPath)
 
 print "End of Reading"
 
-path = "../../ClusterResultsHumanHH2/"
+path = sys.argv[1]
 
 IdMatchTopics = pickle.load(open(path + "IdMatchTopics","r"))
 
@@ -62,8 +62,8 @@ AuthorMatchTopics = {}
 PaperNum = {}
 for p in papers:
     Id = p.ID 
-    Aulist = p.AU
-    Topics = IdMatchTopics[Id]
+    Aulist = list(p.AU)
+    Topics = dict(IdMatchTopics[Id])
     if len(Topics)==0: continue
     for au in Aulist:
         if au in PaperNum:
@@ -78,6 +78,11 @@ for p in papers:
             else:
                 AuthorMatchTopics[au][tot] = Topics[tot]
 
+for au in AuthorMatchTopics:
+    paperN = float(PaperNum[au])
+    for tot in AuthorMatchTopics[au]:
+        AuthorMatchTopics[au][tot] = float(AuthorMatchTopics[au][tot]/paperN)
+
 AMT = open(path + "AuthorMatchTopics.dump","wb")
 pickle.dump(AuthorMatchTopics,AMT)
 PN = open(path + "AuthorPaperNum.dump","wb")
@@ -90,8 +95,6 @@ print "Begin the process: Find the major topics"
 
 for au in AuthorMatchTopics:
     paperN = float(PaperNum[au])
-    for tot in AuthorMatchTopics[au]:
-        AuthorMatchTopics[au][tot] = float(AuthorMatchTopics[au][tot]/paperN)
     i = 0
     for tot in sorted(AuthorMatchTopics[au],key=AuthorMatchTopics[au].get,reverse=True):
         i += 1
@@ -109,8 +112,8 @@ print "Begin the process: Calculate the coauthor porportion"
 
 for p in papers:
     Id = p.ID 
-    Aulist = p.AU  # authors should be in the AuthorMatchMajorTopics list first.
-    Topics = IdMatchTopics[Id]
+    Aulist = list(p.AU)  # authors should be in the AuthorMatchMajorTopics list first.
+    Topics = dict(IdMatchTopics[Id])
     i = 0
     PaperMajorTopic = ""
     for tot in sorted(Topics,key=Topics.get,reverse=True):
@@ -152,6 +155,4 @@ output.close()
 
 print "Done!"
 
-# assign the authors
 
-#calculate the pairs porportion 

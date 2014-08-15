@@ -1,0 +1,16 @@
+The codes in this directory is mainly for parse data from the .xml file of ACMdata and Wikipedia links.
+
+conceptIdExtract.py, wikiLinkExtract.py: codes to process the wikipedia links lines. Not sure their functions now.
+
+parse_ID_reference.py: parse the ID and RF for papers in proceedings, save them as the dictionary in ACMdata directory named as "ID_RF.dump"
+
+parse_ID_year.py: parse the ID and Year information for papers in proceedings, save them as the dictionary in ACMdata directory named as "ID_Year.dump"
+
+parse_metadata.py: parse the metadata including ID, Title, SO, Authors, Reference, Affiliation, Category. save them as a txt file in the ACMdata directory named as ID_Metadata_Proc.txt"
+
+parse_title_abstract_fulltext.py: parse the ID, Title, Abstract and Fulltext information from the .xml files of proceedings. saved as ID_AB_FT.txt in the "ACMdata" directory.
+
+parse_title_abstract_venue.py: the parsing codes to extract data for Yue.
+
+Parse-CHI: the code originally used to parse CHI paper, not used anymore
+

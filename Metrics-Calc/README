@@ -1,1 +1,5 @@
 The codes in this directory is used to calculate the scores of some metrics. 
+
+MetricsCalc.py: The code to extract the subset of papers written by authors in authorlist in the parameter directory.
+
+MetricsCalc2.py: The code calculate Entropy, Entropy2, Simpson, 1 - Gini Index, GLscore, Shiyan1 for the dataset. Input file include IdMatchTopic and CluSimDic. The results will be printed out directly.
