@@ -4,4 +4,8 @@ apcluster-preporocess.sh: The scripts make use of three scripts from /LangProc. 
 
 apcluster.sh: The script to run the apcluster codes. input files contain: similarityFile and pref.txt. The clustering results will be processed by TopicsShow.py in /TopicExtract 
 
-paperAssign.sh: The script used to assign the papers according to the results of previous clustering
+paperAssign.sh: The script used to assign the papers according to the results of previous clustering, "IdMatchTopics" will be the most important result file used by other scripts later
+
+showAuthorAssign.sh: The script used to show some the topic assignment results for specific authors.
+
+MetricsCalc.sh: 

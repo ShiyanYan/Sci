@@ -4,7 +4,7 @@ dicName=${dicName}
 wordSpaceName=${workSpaceName}
 
 DICT=../../DictForPaper/$dicName
-WORKPATH=../LangProc/
+WORKPATH=../Temp-File-Generate/
 OUTPUTPATH=../../$wordSpaceName/
 mkdir ${OUTPUTPATH}
 python ${WORKPATH}occurrencCount.py ${DICT} ${OUTPUTPATH}gramslist

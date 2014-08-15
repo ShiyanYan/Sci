@@ -1,3 +1,16 @@
 The codes in this directory are mainly used for assign the papers according to the clustering results generated previously. 
 
-AbbrevDetect.py: The codes to detect the abbreviation of grams in the abstracts and fulltext of papers. 
+AbbrevDetect.py: The codes to detect the abbreviation of grams in the abstracts and fulltext of papers. The match information is from "abbrvs.count" (created by Eytan, saved in DicForPaper directory). The results of two match files called AbMatchGrams and WholeMatchAb are stored in the result directory. The txt version is written in AbbMatch in the result directory
+
+AbFtProcessing.py: The codes to extract the grams from the abstract and fulltext. It will use the input files ID_AB_FT from ACMdata directory, and the WholeMatchAb generated previously. The result file will be saved in the "Paper_Assignment_Result.txt", in the format:
+ID 
+AB
+gram1 gram2
+FT
+gram1 gram2
+
+PaperAssign.py: The codes to assign the paper according to the dictionaries previously generated. The input file is "Paper_Assignment_Result.txt" and the final scores for every topics every ID will be stored in IdMatchTopics in the result directory
+
+paperExtract.py: for a specific author (name format Jon Kleinberg), extract the paper written by him and output the papers into SubPapers.dump in the result directory.
+
+showPaperAssign.py: with the subpaper set generated previously, using "IdMatchTopics" to assign the author to the Topics. print out the assignment results for both the papers and authors
