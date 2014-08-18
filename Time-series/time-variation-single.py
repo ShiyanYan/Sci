@@ -60,7 +60,7 @@ for Id in sorted(subIDmatchYear,key=subIDmatchYear.get,reverse=False):
 
 print "Printing the .csv file"
 
-output = open("../../ClusterResultsHumanHH2/metrics.csv","w")
+output = open("../../ClusterResultsHumanHH2/5years_sliced_" + authorname + ".csv","w")
 k = 0
 scorepre = []
 scorenow = []
