@@ -17,9 +17,9 @@ IDmatchAuthor = pickle.load(open(path + "ID_AU.dump","rb"))
 IDmatchYear = pickle.load(open(path + "ID_Year.dump","rb"))
 
 path = "../../ClusterResultsHumanHH2/"
-IDmatchTopics = pickle.load(open(path + "IdMatchTopics","rb")) ##
+IdMatchTopics = pickle.load(open(path + "IdMatchTopics","rb")) ##
 
-metricsNames = []
+metricsNames = ["Entropy","Entropy2","Simpson","Gini","GLscore","Shiyan1","Shiyan2"]
 
 for Id in IDmatchAuthor:
     if authorname in IDmatchAuthor[Id]:
@@ -38,16 +38,18 @@ previousYear = 0
 mini = []
 maxi = []
 
-for i in range(0,6):
+for i in range(0,MetricsN):
     mini.append(100)
     maxi.append(0)
 
 
 chroIDlist = sorted(subIDmatchYear,key=subIDmatchYear.get,reverse=False)
 
-startyear = subIDmatchYear(chroIDlist[0])
+startyear = subIDmatchYear[chroIDlist[0]]
 
-endyear = subIDmatchYear(chroIDlist[len(chroIDlist)-1])
+endyear = subIDmatchYear[chroIDlist[len(chroIDlist)-1]]
+
+print "Startyear",startyear,"Endyear",endyear
 
 li = 0
 ri = 0 
@@ -67,11 +69,12 @@ for st in range(startyear,endyear-window+2):
     ed = st + window -1
     while (ri<=len(chroIDlist)-1) and (subIDmatchYear[chroIDlist[ri]]<=ed):
         IDlistNow.append(chroIDlist[ri])
+        print subIDmatchYear[chroIDlist[ri]],IdMatchTopics[chroIDlist[ri]]
         ri += 1
     while subIDmatchYear[chroIDlist[li]]<st:
         IDlistNow.remove(chroIDlist[li])
         li += 1
-    Topics = 0
+    Topics = {}
     for ids in IDlistNow:
         tot = dict(IdMatchTopics[ids])
         for evtot in tot:
@@ -99,7 +102,7 @@ scorenow = []
 output.write("Year")
 
 for name in metricsNames:
-    output.write("," + metricsNames[name])
+    output.write("," + name)
 
 output.write("\n")
 
