@@ -138,7 +138,7 @@ for alpha in range(-5,6):
                 if scores1<scores0: S1S += 1
                 if scores2>scores0: S2S += 1
                 if (scores2>scores0) and (scores3>scores2) and (scores3-scores2<scores2-scores0): S3S += 1
-                if scores4>scores0: S4S += 1
+                if scores4<scores2: S4S += 1
             
 
             print "The Results" + " is:"

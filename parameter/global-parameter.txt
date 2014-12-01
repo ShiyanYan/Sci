@@ -1,2 +1,2 @@
-dicName=seed5s.h
+dicName=seed5s
 workSpaceName=ClusterResultsHumanHH2

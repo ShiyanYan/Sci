@@ -131,7 +131,7 @@ for au in Authorlist:
         if scores1[i]<scores0[i]: S1S[i] += 1
         if scores2[i]>scores0[i]: S2S[i] += 1
         if (scores2[i]>scores0[i]) and (scores3[i]>scores2[i]) and (scores3[i]-scores2[i]<scores2[i]-scores0[i]): S3S[i] += 1
-        if scores4[i]>scores0[i]: S4S[i] += 1
+        if scores4[i]<scores2[i]: S4S[i] += 1
 
 print "The results of simulation for all the metrics"
 
@@ -142,5 +142,5 @@ for i in range(0,Nmetrics):
     print "The Results of " + MetricsNames[i] + " is"
     print "Simu1: " + str(float(S1S[i]) / float(totN)) + " Simu2: " + str(float(S2S[i])/float(totN)) + " Simu3: " + str(float(S3S[i])/float(S2S[i])) + " Simu4: " + str(float(S4S[i])/float(totN))
     output.write(str(MetricsNames[i]) + "," + str(float(S1S[i])/float(totN)) + "," + str(float(S2S[i])/float(totN)) + "," + str(float(S3S[i])/float(S2S[i])) + "," + str(float(S4S[i])/ float(totN))  + "\n")
-
+    print totN, S1S[i], S2S[i], S3S[i], S4S[i]
 output.close()

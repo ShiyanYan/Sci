@@ -12,7 +12,7 @@ path = "../../ACMdata/"
 Authorlist = pickle.load(open(path + "HindexAuthorList.dump","rb"))
 
 
-path = "../../ClusterResultsHumanHH2/"
+path = "../../ClusterResultsHumanHH3/"
 AuMatchIDmatchTopics = pickle.load(open(path+"AuMatchIDmatchTopics.dump","rb"))
 exemplar = pickle.load(open(path + "exemplar.dump","r"))
 PaperNum = pickle.load(open(path + "AuthorPaperNum.dump","r"))
@@ -132,7 +132,7 @@ for au in Authorlist:
         if scores1[i]<=scores0[i]: S1S[i] += 1
         if scores2[i]>=scores0[i]: S2S[i] += 1
         if (scores2[i]>=scores0[i]) and (scores3[i]>=scores2[i]) and (scores3[i]-scores2[i]<=scores2[i]-scores0[i]): S3S[i] += 1
-        if scores4[i]>=scores0[i]: S4S[i] += 1
+        if scores4[i]<=scores2[i]: S4S[i] += 1 # to evaluate the effect of closeness
 
 print "The results of simulation for all the metrics"
 
